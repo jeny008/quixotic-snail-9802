@@ -9,8 +9,13 @@ import {bigbasket_onlineStore,Brand_store,Home_kitchen,Beauty_hygine,
         clean_Household,Snacks_Store,offerBtn,fruitAndvegetable,topOffers,
         Your_Daily_Staples,Beverages,bankOffer} from '../Home/ImageData'
 import { Footer } from '../../components/footer/Footer'
+import { useEffect } from 'react'
 
 export const Home = () => {
+
+    useEffect(()=>{
+        document.title="Online Grocery Shopping and Online Supermarket in India - bigbasket"
+    })
   return (
     <div className={styles.home}>
         <Navbar/>

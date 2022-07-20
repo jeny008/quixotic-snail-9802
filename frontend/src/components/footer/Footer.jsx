@@ -70,7 +70,7 @@ export const Footer = () => {
         </tr>
     </table>
     </div>
-    <p id={styles.copyright}>Copyright </p>
+    <p id={styles.copyright}>Copyright © 2021-2023 Supermarket Grocery Supplies Pvt Ltd</p>
     </>
   )
 }
