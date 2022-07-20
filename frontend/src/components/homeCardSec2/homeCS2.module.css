@@ -1,0 +1,17 @@
+.topOffer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto 7%;
+    gap: 10px;
+  }
+  .topOffer > div img {
+    width: 95%;
+    height: 100%;
+  }
+  .topOffer > div{
+    cursor: pointer;
+    border: solid 1px gainsboro;
+  }
+.topOffer > div:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

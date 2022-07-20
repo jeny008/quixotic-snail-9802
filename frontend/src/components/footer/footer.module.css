@@ -1,0 +1,35 @@
+#footer{
+    /* border: solid; */
+    margin: auto 7%;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer div{
+    display: flex;
+    flex-direction: column;
+    font-size:18px ;
+}
+#footer div a{
+    margin: 5px 5px;
+}
+#footer div > p:first-child{
+    font-size: 25px;
+}
+
+#lower{
+    /* border: solid; */
+    margin: 1% 7%;
+    text-align: left;
+}
+#lower tr td:first-child{
+    width: 200px;
+}
+#copyright{
+    background-color: gainsboro;
+    text-align: left;
+    padding: 10px;
+    padding-left: 7%;
+
+}

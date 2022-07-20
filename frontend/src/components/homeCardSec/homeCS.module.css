@@ -1,0 +1,17 @@
+.staples {
+    display: grid;
+    grid-template-columns: repeat(6, 16%);
+    gap: 10px;
+    margin: 1% 7%;
+  }
+  .staples > div {
+    border: solid 1px gainsboro;
+    cursor: pointer;
+  }
+  .staples > div:hover,
+  .topOffer > div:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .staples img {
+    width: 100%;
+  }

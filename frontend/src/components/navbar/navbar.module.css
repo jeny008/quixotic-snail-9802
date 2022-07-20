@@ -1,0 +1,80 @@
+.navbar {
+  display: flex;
+  /* border: solid red; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 7%;
+}
+.userLocation {
+  /* border: solid rgb(36, 78, 214); */
+  text-align: right;
+  padding-bottom: 10px;
+}
+.userLocation span {
+  margin: 10px;
+  cursor: pointer;
+}
+.userLocation span:hover {
+  color: #84c225;
+}
+.search_cart {
+  display: flex;
+  /* border: solid ; */
+  width: 1000px;
+  justify-content: space-between;
+}
+.search_cart input {
+  font-size: 18px;
+  padding: 5px;
+  width: 600px;
+  outline: #84c225;
+}
+.search_cart button {
+  font-size: 21px;
+  padding-bottom: 2px;
+  color: white;
+  background-color: #84c225;
+  border: solid #84c225;
+  cursor: pointer;
+}
+#logo img {
+  height: 75px;
+  cursor: pointer;
+}
+.cart {
+  /* font-size: 20px; */
+  display: flex;
+  align-items: center;
+  /* border: solid; */
+  border-radius: 3px;
+  padding: 10px;
+  background-color: rgb(238, 238, 238);
+  cursor: pointer;
+}
+.cart i {
+  font-size: 40px;
+  color: rgb(255, 78, 78);
+  margin-right: 10px;
+}
+
+.catAndoffer {
+  border: solid 1px rgb(235, 235, 235);
+  margin: auto 7%;
+  text-align: left;
+}
+.catAndoffer select {
+  background-color: #84c225;
+  color: white;
+}
+
+.catAndoffer select,
+.catAndoffer button {
+  font-size: 18px;
+  border: none;
+  padding: 7px 15px;
+  cursor: pointer;
+}
+.catAndoffer button:hover {
+  background-color: #84c225;
+  color: white;
+}
