@@ -4,7 +4,7 @@ import Categories from './Categories'
 import { Box, Button, Center, Grid, Image, Img, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GetProductsData } from '../../../redux/actions/action'
+import { GetProductsData } from '../../redux/actions/action'
 
 
 const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg"
