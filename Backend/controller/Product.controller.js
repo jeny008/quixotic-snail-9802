@@ -3,7 +3,7 @@ const DataModel = require("../models/Product.model");
 // All Product
 const getAllProducts = async () => {
   try {
-    const data = await DataModel.findOne();
+    const data = await DataModel.find();
     return {
       message: "Data obtained successfully",
       status: "success",
