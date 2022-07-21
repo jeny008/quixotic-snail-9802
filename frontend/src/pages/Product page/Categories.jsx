@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import "./Categories.css"
 import { useSearchParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { GetProductsData } from '../../../redux/actions/action'
+import { GetProductsData } from '../../redux/actions/action'
 
 const Categories = () => {
     const [SearchParams,setSearchParams]=useSearchParams()
