@@ -1,0 +1,10 @@
+.input::placeholder {
+    font-size: 12px;
+}
+.Signup:hover{
+    border: Solid #2bec11;
+    background-color: #2bec11;
+}
+.pitInp{
+    border: 1px solid#2bec11;
+}
