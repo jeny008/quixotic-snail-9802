@@ -16,6 +16,18 @@ const ProductPage = () => {
     dispatch(GetProductsData())
   },[dispatch])
 
+  const handleCart=(Id)=>{
+    console.log(Id);
+  }
+
+  const HandleIncrement=()=>{
+    console.log(1);
+  }
+
+  const HandleDecrement=()=>{
+    console.log(-1);
+  }
+
   return (
     <Box>
       <Box>
@@ -43,7 +55,7 @@ const ProductPage = () => {
           <Box>
             <Grid className='products-scr' display="grid" gridTemplateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)",lg:"repeat(4,1fr)"}}  >
                 {ProductsData.map((item)=>( 
-                  <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo}/>
+                  <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo} handleCartData={handleCart} HandleIncrementQty={HandleIncrement} HandleDecrementQty={HandleDecrement}/>
                 ))}
             </Grid>
           </Box>
@@ -54,7 +66,7 @@ const ProductPage = () => {
 }
 export default ProductPage
 
-const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo})=>{
+const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData,HandleIncrementQty,HandleDecrementQty})=>{
   return(
     <>
       <Box key={Id} className="component">
@@ -69,10 +81,10 @@ const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo})=>{
           <Box fontSize={{ base: '10px', md: '12px', lg: '15px' }}>Rs {mrp}</Box>
         </Box>
         <Box className='AddtoCart'>
-          <Button>+</Button>
+          <Button onClick={HandleIncrementQty}>+</Button>
           <Text className='count'>1</Text>
-          <Button>-</Button>
-          <Button>Add</Button>
+          <Button onClick={HandleDecrementQty}>-</Button>
+          <Button onClick={()=>handleCartData(Id)}>Add</Button>
         </Box>
       </Box>
     </>
