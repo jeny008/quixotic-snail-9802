@@ -1,31 +1,74 @@
 const UserModel = require("../models/User.model");
-const { options } = require("../routes/Product.route");
-
+const Redis = require("ioredis");
+const jwt = require("jsonwebtoken");
 const checkLogin = async () => {};
 
+//otp for user varification
 const sendOtp = async (mobile) => {
   try {
-    const user = await UserModel.findOne({ Mobile: mobile });
+    const user = await UserModel.findOne({ mobile });
     if (user) {
       const otp = Math.floor(1000 + Math.random() * 9000);
-      let newUserData = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: mobile,
-        cart: [],
-      };
-      const newUser = new UserModel(newUserData);
-      newUser.save((err, success) )
-      return { message: "Otp sent", status: "success", otp };
+      const client = new Redis({
+        host: "127.0.0.1",
+        port: 6379,
+      });
+      client.set(otp, mobile, "ex", 10000);
+      return { message: "otp sent", status: "success", otp };
+    } else {
+      return { message: "user does not exist", status: "failed" };
     }
   } catch (err) {
-    return { message: "Otp sent failed", status: "error" };
+    return { message: "otp failed", status: "error" };
   }
 };
 
-const loginUser = async (otp) => {};
+//login user
+const loginUser = async (otp) => {
+  try {
+    const client = new Redis({
+      host: "127.0.0.1",
+      port: 6379,
+    });
+    let value = await client.get(otp);
+    if (value === null) {
+      return { message: "wrong otp", status: "failed" };
+    } else {
+      const token = jwt.sign(
+        {
+          //no -> mobile
+          no: value,
+        },
+        process.env.SECRET_KEY
+      );
+      return { message: "login success", status: "success", token };
+    }
+  } catch (err) {
+    return { message: "something went wrong", status: "error" };
+  }
+};
 
-const logoutUser = async () => {};
+// Create new user
+const signupUser = async (first_name, last_name, mobile) => {
+  try {
+    const user = await UserModel.findOne({ mobile });
+    if (user) {
+      return { message: "user already exists", status: "exists" };
+    } else {
+      let newUserData = {
+        first_name,
+        last_name,
+        mobile,
+        cart: [],
+      };
+      const newUser = new UserModel(newUserData);
+      newUser.save();
+      return { message: "user created", status: "success" };
+    }
+  } catch (err) {
+    return { message: "something went wrong", status: "error" };
+  }
+};
 
-module.exports = { checkLogin, loginUser, logoutUser };
+
+module.exports = { checkLogin, loginUser, sendOtp, signupUser };

@@ -6,6 +6,7 @@ const dotenv = require("dotenv").config();
 const Redis = require("ioredis");
 const productRouter = require("./routes/Product.route");
 const useerRouter = require("./routes/User.route");
+const userRouter = require("./routes/User.route");
 
 const app = express();
 app.use(
@@ -15,15 +16,12 @@ app.use(
   })
 );
 
-// const client = new Redis({
-//   host: "127.0.0.1",
-//   port: 6379,
-// });
 
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
 
+app.use("/BigBasket", userRouter);
 app.use("/BigBasket/product", productRouter);
 
 const PORT = process.env.PORT || 8080;
