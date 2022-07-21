@@ -8,7 +8,6 @@ const {
 const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
-
   const { message, status, data } = await getAllProducts(req.query);
 
   console.log(req.body, req.query)
@@ -16,10 +15,10 @@ productRouter.get("/", async (req, res) => {
   if(category) {
     console.log(category)
   }
-  const { message, status, data } = await getAllProducts();
+  // const { message, status, data } = await getAllProducts();
 
   const Category = req.query.Category || null;
-  const { message, status, data } = await getAllProducts(Category);
+  // const { message, status, data } = await getAllProducts(Category);
   if (status === "error") {
     return res.status(404).send({ message, status, data });
   }
