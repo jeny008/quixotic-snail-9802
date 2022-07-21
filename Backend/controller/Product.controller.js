@@ -1,9 +1,21 @@
 const DataModel = require("../models/Product.model");
 
 // All Product
-const getAllProducts = async () => {
+const getAllProducts = async (category) => {
+  if(category){
+    try {
+      const data = await DataModel.find(category);
+      return {
+        message: "Data obtained successfully",
+        status: "success",
+        data: data,
+      };
+    } catch (err) {
+      return { message: "something went wrong", status: "error", data: null };
+    }
+  }
   try {
-    const data = await DataModel.find();
+    const data = await DataModel.find(category);
     return {
       message: "Data obtained successfully",
       status: "success",
@@ -12,6 +24,7 @@ const getAllProducts = async () => {
   } catch (err) {
     return { message: "something went wrong", status: "error", data: null };
   }
+  
 };
 
 // Single product
