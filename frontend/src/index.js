@@ -26,11 +26,9 @@ root.render(
   <React.StrictMode>
   <BrowserRouter>
     <Provider store={Store}>
-      <BrowserRouter>
         <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>
-      </BrowserRouter>
     </Provider>
     </BrowserRouter>
   </React.StrictMode>
