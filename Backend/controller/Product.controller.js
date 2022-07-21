@@ -16,18 +16,20 @@ const getAllProducts = async () => {
 
 // Single product
 const getProducts = async (id) => {
+  conso
   try {
-    let data = await ProductModel.aggregate([
-      { $match: { _id: id } },
-      {
-        $lookup: {
-          from: "comment",
-          localField: "CommentID",
-          foreignField: "_id",
-          as: "comment",
-        },
-      },
-    ]);
+  //   let data = await ProductModel.aggregate([
+  //     { $match: { _id: id } },
+      // {
+      //   $lookup: {
+      //     from: "comment",
+      //     localField: "CommentID",
+      //     foreignField: "_id",
+      //     as: "comment",
+      //   },
+      // },
+    // ]);
+    const data = await ProductModel.findbyid(id)
     return {
       message: "data obtained successfully",
       status: "success",
