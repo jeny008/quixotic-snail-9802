@@ -22,8 +22,9 @@
   margin-left: auto;
   margin-right: 7%;
 }
-.sectionHeading h2 {
+.sectionHeading p {
   margin: 0;
+  font-size: 30px;
 }
 .sectionHeading button {
   color: white;
@@ -35,6 +36,7 @@
 }
 .secHead {
   margin-top: 50px;
+  font-size: 30px;
 }
 .topOffer {
   display: grid;

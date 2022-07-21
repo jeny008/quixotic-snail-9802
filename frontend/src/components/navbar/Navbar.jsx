@@ -1,11 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./navbar.module.css";
 
 export const Navbar = () => {
+  
+  const navigate  = useNavigate()
+
   return (
     <div>
       <div className={styles.navbar}>
-        <div id={styles.logo}>
+        <div onClick={()=>navigate("/")} id={styles.logo}>
           <img
             src="https://64.media.tumblr.com/b0b0f04a44b92332a6c6343ac5bf1e96/3ff50a552f527619-c9/s400x600/d7effd42407109492412543fd1f3f1613c97483a.png"
             alt="bigbasket_logo"
@@ -14,13 +18,13 @@ export const Navbar = () => {
         <div>
           <div className={styles.userLocation}>
             <span>
-              <i class="fa-solid fa-phone"></i> 656465415645456
+              <i className="fa-solid fa-phone"></i> 656465415645456
             </span>
             <span>
-              <i class="fa-solid fa-location-dot"></i> 52125 Bengaluru
+              <i className="fa-solid fa-location-dot"></i> 52125 Bengaluru
             </span>
             <span>
-              <i class="fa-regular fa-user"></i> login/signup
+              <i className="fa-regular fa-user"></i> login/signup
             </span>{" "}
             <div></div>
           </div>
@@ -33,12 +37,12 @@ export const Navbar = () => {
                 placeholder="Search for products.."
               />
               <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
             <div className={styles.cart}>
               <div>
-                <i class="fa-solid fa-basket-shopping"></i>
+                <i className="fa-solid fa-basket-shopping"></i>
               </div>
               <div>
                 <span>My Basket</span>
@@ -55,10 +59,10 @@ export const Navbar = () => {
         </select>
         <button>
           {" "}
-          <i class="fa-solid fa-diamond"></i> Offers
+          <i className="fa-solid fa-diamond"></i> Offers
         </button>
         <button>
-          <i class="fa-solid fa-shop"></i> BB Speciality
+          <i className="fa-solid fa-shop"></i> BB Speciality
         </button>
       </div>
     </div>
