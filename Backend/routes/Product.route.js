@@ -4,7 +4,6 @@ const { getAllProducts } = require("../controller/Product.controller");
 const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
-  console.log(req.query);
   const { message, status, data } = await getAllProducts(req.query);
   if (status === "error") {
     return res.status(404).send({ message, status, data });
