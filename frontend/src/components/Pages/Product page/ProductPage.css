@@ -102,3 +102,10 @@
     margin-left: -30%;
     margin-top: 5%;
 }
+.products-scr{
+    height: 88vh;
+    overflow-y: scroll;
+}
+.products-scr::-webkit-scrollbar{
+    display: none;
+}

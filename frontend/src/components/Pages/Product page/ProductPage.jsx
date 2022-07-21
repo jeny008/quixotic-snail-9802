@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./ProductPage.css"
 import Categories from './Categories'
 import { Box, Button, Center, Grid, Image, Img, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { GetProductsData } from '../../../redux/actions/action'
-
-
 const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg"
+
+
 const ProductPage = () => {
   const ProductsData=useSelector((state)=>state.Products.ProductsData)
-  console.log(ProductsData.data);
+  console.log(ProductsData);
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(GetProductsData())
@@ -40,8 +40,8 @@ const ProductPage = () => {
             </Center>
             <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }}>Based on what customers like you have bought</Text>
           </Box>
-          <Box >
-            <Grid  display="grid" gridTemplateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)",lg:"repeat(4,1fr)"}}  >
+          <Box>
+            <Grid className='products-scr' display="grid" gridTemplateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)",lg:"repeat(4,1fr)"}}  >
                 {ProductsData.map((item)=>( 
                   <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo}/>
                 ))}
