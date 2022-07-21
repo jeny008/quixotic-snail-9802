@@ -1,14 +1,23 @@
 const DataModel = require("../models/Product.model");
 
 // All Product
-const getAllProducts = async () => {
+const getAllProducts = async (Category) => {
   try {
-    const data = await DataModel.find();
-    return {
-      message: "data obtained successfully",
-      status: "success",
-      data: data,
-    };
+    if (Category === null) {
+      const data = await DataModel.find();
+      return {
+        message: "data obtained successfully",
+        status: "success",
+        data: data,
+      };
+    } else {
+      const data = await DataModel.find({ Category });
+      return {
+        message: "data obtained successfully",
+        status: "success",
+        data: data,
+      };
+    }
   } catch (err) {
     return { message: "something went wrong", status: "error", data: null };
   }
@@ -16,20 +25,8 @@ const getAllProducts = async () => {
 
 // Single product
 const getProducts = async (id) => {
-  conso
   try {
-  //   let data = await ProductModel.aggregate([
-  //     { $match: { _id: id } },
-      // {
-      //   $lookup: {
-      //     from: "comment",
-      //     localField: "CommentID",
-      //     foreignField: "_id",
-      //     as: "comment",
-      //   },
-      // },
-    // ]);
-    const data = await ProductModel.findbyid(id)
+    const data = await DataModel.findById(id);
     return {
       message: "data obtained successfully",
       status: "success",
@@ -40,9 +37,9 @@ const getProducts = async (id) => {
   }
 };
 
-const categoryFilter = async (value) => {
+const addToCart = async (id) => {
   try {
-    const data = await DataModel.find({ Category: value });
+    const data = await Model.findById(id);
     return {
       message: "data obtained successfully",
       status: "success",
@@ -53,4 +50,4 @@ const categoryFilter = async (value) => {
   }
 };
 
-module.exports = { getAllProducts, getProducts, categoryFilter };
+module.exports = { getAllProducts, getProducts, addToCart };
