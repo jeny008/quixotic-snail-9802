@@ -1,25 +1,42 @@
 import { Box, Checkbox, CheckboxGroup, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
 import "./Categories.css"
+import { useSearchParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { GetProductsData } from '../../../redux/actions/action'
 
 const Categories = () => {
+    const [SearchParams,setSearchParams]=useSearchParams()
+    const [categoriesData,setcategoriesData]=useState(SearchParams.getAll("Category")||[])
+    const dispatch=useDispatch()
+    const handlecategoriesData=(value)=>{
+        setcategoriesData(value)
+    }
+
+    console.log(categoriesData);
+    useEffect(()=>{
+        setSearchParams({Category:categoriesData})
+        let mainParams={Category:SearchParams.getAll("Category")}
+        dispatch(GetProductsData(mainParams))
+    },[categoriesData,SearchParams,dispatch,setSearchParams])
   return (
     <Box >
-        <CheckboxGroup colorScheme='green'>
+        <CheckboxGroup colorScheme='green' defaultValue={categoriesData} onChange={handlecategoriesData}>
               <VStack alignItems={"baseline"} marginLeft={"18%"}>
                <Box className='categories'  ml={{ base: '-22%', md: '-22%', lg: '-22%',xl:"-20%", '2xl':'-20%' }}>
                     <Box>
-                        <Checkbox Checkbox value={"Fruits vegetables"} className='categories-gap' >
+                        <Checkbox Checkbox value={"Fruits_vegetables"} className='categories-gap' >
                             <Text fontSize={{ base: '8px', md: '12px', lg: '18px' }}>Fruits vegetables</Text>
                         </Checkbox>
                     </Box>
                     <Box>
-                        <Checkbox value={"Foodgrains oil masala"} className='categories-gap' >
+                        <Checkbox value={"Foodgrains_oil_masala"} className='categories-gap' >
                             <Text fontSize={{ base: '8px', md: '12px', lg: '18px' }}>Foodgrains oil masala</Text>
                         </Checkbox>
                     </Box>
                     <Box>
-                        <Checkbox Checkbox value={"Bakery cakes dairy"}  className='categories-gap' >
+                        <Checkbox Checkbox value={"Bakery_cakes_dairy"}  className='categories-gap' >
                             <Text fontSize={{ base: '8px', md: '12px', lg: '18px' }}>Bakery cakes dairy</Text>
                         </Checkbox>
                     </Box>
@@ -29,7 +46,7 @@ const Categories = () => {
                         </Checkbox>
                     </Box>
                     <Box>
-                        <Checkbox value={"Snacks branded foods"} className='categories-gap'>
+                        <Checkbox value={"Snacks_branded_foods"} className='categories-gap'>
                         <Text fontSize={{ base: '8px', md: '12px', lg: '18px' }}>Snacks branded foods</Text>
                         </Checkbox>
                     </Box>
