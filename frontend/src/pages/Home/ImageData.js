@@ -1,3 +1,23 @@
+
+export const Slidertop = [
+  "https://www.bigbasket.com/media/uploads/banner_images/hp_fom_m_bbpl-staples_460_180722_Bangalore.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/fresho_days_fnv_Bangalore-1600x460_19thJULY22.jpeg",
+  "https://www.bigbasket.com/media/uploads/banner_images/HP_EMF_M_T1-1600x460_140722.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/t1_hp_bcd_m_dairy_1600x460_250622.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_cmc_happychef_1600x460_250622.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_bcd_paneer_1600x460_250622.jpg"
+];
+
+export const anonymus = [
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_babycare_250622_400.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_health_suppliment_250622_400.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_petstore_250622_400.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_bcd_m_bcd_250622_400.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_babycare_250622_400.jpg",
+  "https://www.bigbasket.com/media/uploads/banner_images/all_hp_m_health_suppliment_250622_400.jpg"
+
+]
+
 export const offerBtn = [
   "https://www.bigbasket.com/media/uploads/banner_images/all_hp-emf_hp_topstrip_m_250622_01.png",
   "https://www.bigbasket.com/media/uploads/banner_images/t1_hp_cmc_neu-pass_topstrip_m_250622_02.png",
