@@ -5,7 +5,7 @@ const getAllProducts = async () => {
   try {
     const data = await DataModel.find();
     return {
-      message: "Data obtained successfully",
+      message: "data obtained successfully",
       status: "success",
       data: data,
     };
@@ -29,7 +29,7 @@ const getProducts = async (id) => {
       },
     ]);
     return {
-      message: "Data obtained successfully",
+      message: "data obtained successfully",
       status: "success",
       data: data,
     };
@@ -42,7 +42,7 @@ const categoryFilter = async (value) => {
   try {
     const data = await DataModel.find({ Category: value });
     return {
-      message: "Data obtained successfully",
+      message: "data obtained successfully",
       status: "success",
       data: data,
     };
