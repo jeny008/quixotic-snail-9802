@@ -4,7 +4,7 @@ import Categories from './Categories'
 import { Box, Button, Center, Grid, Image, Img, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GetProductsData } from '../../../redux/actions/action'
+import { GetProductsData } from '../../redux/actions/action'
 const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg"
 
 
@@ -72,8 +72,8 @@ const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo})=>{
           <Button>+</Button>
           <Text className='count'>1</Text>
           <Button>-</Button>
+          <Button>Add</Button>
         </Box>
-        <Button className='cart'>Add To Cart</Button>
       </Box>
     </>
   )
