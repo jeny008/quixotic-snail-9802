@@ -1,0 +1,76 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  } */
+  hr{
+    margin: 1% 7%;
+  }
+.offerBtn {
+  display: flex;
+  /* border: solid; */
+  margin: 2% 7%;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.sectionHeading {
+  display: flex;
+  /* border: solid; */
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: 7%;
+}
+.sectionHeading h2 {
+  margin: 0;
+}
+.sectionHeading button {
+  color: white;
+  background-color:yellowgreen ;
+  border: none;
+  padding: 3px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.secHead {
+  margin-top: 50px;
+}
+.topOffer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto 7%;
+}
+.topOffer > div img {
+  width: 95%;
+  cursor: pointer;
+}
+.staples {
+  display: grid;
+  grid-template-columns: repeat(6, 16%);
+  gap: 10px;
+  margin: auto 7%;
+}
+.staples > div {
+  border: solid 1px gainsboro;
+}
+.staples > div:hover,
+.topOffer > div:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.staples img {
+  width: 100%;
+}
+
+.bigbasketstory {
+  text-align: left;
+  border: solid 1px gray;
+  margin: 3% 7%;
+  padding: 20px;
+  text-align: justify;
+  font-size: 15px;
+}
+.bigbasketstory p:first-child {
+  font-size: 35px;
+  margin: 0px;
+}

@@ -1,10 +1,12 @@
-import ProductPage from "./components/Pages/Product page/ProductPage"
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Mainroutes } from "./router/Mainroutes";
+// import ProductPage from "./components/Pages/Product page/ProductPage"
 
 function App() {
   return (
     <div className="App">
-      <ProductPage/>
+      <Mainroutes />
     </div>
   );
 }
