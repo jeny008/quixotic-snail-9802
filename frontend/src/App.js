@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import "./App.css";
 import { Mainroutes } from "./router/Mainroutes";
 import Otp from "./components/Auth/Otp";

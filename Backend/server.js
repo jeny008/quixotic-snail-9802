@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
+const Redis = require("ioredis");
 const productRouter = require("./routes/Product.route");
+const useerRouter = require("./routes/User.route");
+const userRouter = require("./routes/User.route");
 
 const app = express();
 app.use(
@@ -12,14 +15,13 @@ app.use(
     credentials: true,
   })
 );
+
+
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
-
+app.use("/BigBasket", userRouter);
 app.use("/BigBasket/product", productRouter);
 
 const PORT = process.env.PORT || 8080;
