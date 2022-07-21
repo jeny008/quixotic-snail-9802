@@ -21,29 +21,11 @@ const getAllProducts = async (category) => {
       status: "success",
       data: data,
     };
-const getAllProducts = async (Category) => {
-  try {
-    if (Category === null) {
-      const data = await DataModel.find();
-      return {
-        message: "data obtained successfully",
-        status: "success",
-        data: data,
-      };
-    } else {
-      const data = await DataModel.find({ Category });
-      return {
-        message: "data obtained successfully",
-        status: "success",
-        data: data,
-      };
-    }
-  } catch (err) {
+  }
+  catch (err) {
     return { message: "something went wrong", status: "error", data: null };
   }
-  
-};
-
+}
 // Single product
 const getProducts = async (id) => {
   try {
