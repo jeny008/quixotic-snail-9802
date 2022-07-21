@@ -6,7 +6,8 @@ const UserSchema = new Schema(
     Last_Name: String,
     Email: String,
     Mobile: String,
-    OTP: Number,
+    OTP: Number || null,
+    Cart: [Schema.Types.ObjectId],
   },
   { collection: "user" }
 );

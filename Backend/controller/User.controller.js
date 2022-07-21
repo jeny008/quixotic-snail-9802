@@ -2,8 +2,14 @@ const UserModel = require("../models/User.model");
 
 const checkLogin = async () => {};
 
-const loginUser = () => {};
+const sendOtp = async(mobile) => {
+  
+}
 
-const logoutUser = () => {};
+const loginUser = async(otp) => {
+
+};
+
+const logoutUser = async() => {};
 
 module.exports = { checkLogin, loginUser, logoutUser };
