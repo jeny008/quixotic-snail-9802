@@ -8,6 +8,16 @@ const {
 const productRouter = Router();
 
 productRouter.get("/", async (req, res) => {
+
+  const { message, status, data } = await getAllProducts(req.query);
+
+  console.log(req.body, req.query)
+  const category  = req.query;
+  if(category) {
+    console.log(category)
+  }
+  const { message, status, data } = await getAllProducts();
+
   const Category = req.query.Category || null;
   const { message, status, data } = await getAllProducts(Category);
   if (status === "error") {
