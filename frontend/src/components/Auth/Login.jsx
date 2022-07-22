@@ -45,7 +45,7 @@ const Login = () => {
   },[Auth.message,Auth.status,navigate,alert])
   return (
     <Box>
-        <FormControl action="" style={{width:"25%","margin":"auto",paddingBottom:"5%", backgroundColor:"white", paddingTop:"2%", marginBottom:"5%",boxShadow:"rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px", marginTop:"3%" }}>
+        <FormControl action="" style={{"margin":"auto",paddingBottom:"5%", backgroundColor:"white", paddingTop:"2%", marginBottom:"5%",boxShadow:"rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px", marginTop:"3%" }} w={["100%","50%","50%","25%","24.5%"]}>
             <Text style={{"fontSize":20, "fontWeight":"bold", "color":"#a2d05a",paddingBottom:"10%", paddingTop:"5%"}}>LOGIN/SIGN UP</Text>
             <InputGroup style={{"width":"70%", margin:"auto"}}>
                 <InputLeftAddon children='+91' />
@@ -56,9 +56,9 @@ const Login = () => {
               message?(<Text style={{color:"red", }}> - Invalid Mobile Number</Text>):("")
             }
             {
-              otp?(<Text style={{color:"green",width:"70%",margin:"auto"}}>Please Note Your OTP For Future Reference --&gt;<Box style={{fontWeight:"bold"}}>{Auth.data}</Box></Text>):("")
+              otp?(<Text style={{color:"green",width:"70%",margin:"auto"}} fontSize={{ base: '8px', md: '12px', lg: '18px' }}>Please Note Your OTP For Future Reference --&gt;<Box style={{fontWeight:"bold"}}>{Auth.data}</Box></Text>):("")
             }
-            <Button colorScheme='teal' variant='outline' style={{"width":"70%", margin:"auto",marginTop:"13%"}}>Login Using Email Address</Button>
+            <Button colorScheme='teal' variant='outline' style={{"width":"70%", margin:"auto",marginTop:"13%"}} fontSize={{ base: '12px', md: '12px', lg: '14px' }}>Login Using Email Address</Button>
             <br />
             <Button className='Signup' style={{"width":"70%", margin:"auto",marginTop:"5%",backgroundColor:"rgb(162,208,90)"}} onClick={handleSubmit}>Continue</Button>
             <Text style={{"width":"70%", margin:"auto",color:"gray", fontSize:"80%", }}>By continuing, I accept TCP-bigbasket’s <span style={{color:"blue"}}>Terms and Conditions</span> and <span style={{color:"blue"}}>Privacy Policy.</span></Text>
