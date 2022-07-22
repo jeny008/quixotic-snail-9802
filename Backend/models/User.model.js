@@ -2,11 +2,15 @@ const { Schema, model } = require("mongoose");
 
 const UserSchema = new Schema(
   {
-    First_Name: String,
-    Last_Name: String,
-    Email: String,
-    Mobile: String,
-    OTP: Number,
+    first_name: String,
+    last_name: String,
+    mobile: String,
+    Cart: [
+      {
+        productId: Schema.Types.ObjectId,
+        quantity: Number,
+      },
+    ],
   },
   { collection: "user" }
 );

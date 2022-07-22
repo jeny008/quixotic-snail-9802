@@ -93,7 +93,7 @@
 }
 .AddtoCart{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 .count{
     margin-top: 5%;
