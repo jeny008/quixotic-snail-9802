@@ -25,7 +25,8 @@ import { Footer } from "../../components/footer/Footer";
 import { useEffect } from "react";
 import { FooterNew } from "../../components/footer/FooterNew";
 import { useNavigate } from "react-router-dom";
-import { ProductSlider } from "../../components/productslider/ProductSlider";
+import {MultipleItems1,MultipleItems, ProductSlider } from "../../components/productslider/ProductSlider";
+// import  from "../../components/productslider/ProductSlider";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ export const Home = () => {
         <button onClick={() => navigate("/products")}>Show more</button>
       </div>
       <hr />
-      <ProductSlider size={10} />
+      <MultipleItems1 size={10} />
       <p className={styles.secHead}>Bank Offers </p>
       <hr />
       <HomeCardSecII imgData2={bankOffer} />
@@ -72,7 +73,7 @@ export const Home = () => {
         <button>Show more</button>
       </div>
       <hr />
-      <ProductSlider size={10} />
+      <MultipleItems size={10} />
 
       <h2 className={styles.secHead}>Top Offers</h2>
       <hr />
