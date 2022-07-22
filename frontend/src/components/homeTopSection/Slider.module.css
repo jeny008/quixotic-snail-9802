@@ -8,3 +8,20 @@
 width:100%;
 height: 100%;
 }
+@media (max-width:991px) {
+    .slider{
+    
+        /* border: solid red; */
+        height: 300px;
+        margin: 2% auto;
+    }
+  } 
+  
+  @media (max-width: 767px) {
+    .slider{
+    
+        /* border: solid red; */
+        height: 200px;
+        margin: 2% auto;
+    }
+  }
