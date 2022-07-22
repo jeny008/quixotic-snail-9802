@@ -1,5 +1,14 @@
-const authenticate = () => {
-  
-}
+const UserModel = require("../models/User.model");
 
-module.exports = authenticate
+const authenticate = async (mobile) => {
+  try {
+    const user = await UserModel.find({ mobile });
+    if (user) {
+      return { user };
+    }
+  } catch (err) {
+    return { message: "something went wrong", status: "error" };
+  }
+};
+
+module.exports = authenticate;
