@@ -19,7 +19,7 @@ const Otp = () => {
   }
   return (
     <Box>
-        <FormControl style={{width:"25%","margin":"auto",paddingTop:"1%", marginBottom:"5%",boxShadow:"rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px", marginTop:"1%", paddingBottom:"3%" }} >
+        <FormControl style={{"margin":"auto",paddingTop:"1%", marginBottom:"5%",boxShadow:"rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px", marginTop:"1%", paddingBottom:"3%" }} w={["100%","50%","50%","25%","24.5%"]}>
             <Box>
             <Text style={{"fontSize":20, "fontWeight":"bold", "color":"#a2d05a",paddingBottom:"10%", paddingTop:"5%"}}>Verify Mobile Number</Text>
             </Box>
