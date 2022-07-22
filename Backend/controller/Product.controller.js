@@ -51,10 +51,10 @@ const addToCart = async (id, qty, mobile) => {
     return {
       message: "item added to cart",
       status: "success",
-      data: data,
+
     };
   } catch (err) {
-    return { message: "something went wrong", status: "error", data: null };
+    return { message: "something went wrong", status: "error" };
   }
 };
 
@@ -95,6 +95,7 @@ const decreaseQuantity = async (id, mobile) => {
     return { message: "something went wrong", status: "error" };
   }
 };
+
 
 module.exports = {
   getAllProducts,

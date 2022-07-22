@@ -7,6 +7,7 @@ const dotenv = require("dotenv").config();
 const Redis = require("ioredis");
 const productRouter = require("./routes/Product.route");
 const userRouter = require("./routes/User.route");
+const cartRouter = require("./routes/Cart.route");
 
 const app = express();
 app.set("trust proxy", 1); // trust first proxy
@@ -32,6 +33,7 @@ app.use(express.json());
 
 app.use("/BigBasket", userRouter);
 app.use("/BigBasket/product", productRouter);
+app.use("/BigBasket/cart", cartRouter);
 
 const PORT = process.env.PORT || 8080;
 const mongoDB = process.env.MongoAtlas;
