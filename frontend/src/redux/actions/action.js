@@ -1,6 +1,7 @@
 import axios from "axios"
 export const GET_PRODUCTS_DATA="GET_PRODUCTS_DATA"
-
+export const LOADDING="LOADDING"
+export const ERROR="ERROR"
 
 // get Data req from Backend..
 const getProducts=(data)=>({

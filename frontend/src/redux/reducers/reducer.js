@@ -2,7 +2,8 @@ import { GET_PRODUCTS_DATA } from "../actions/action"
 
 
 const init={
-    ProductsData:[]
+    ProductsData:[],
+    productOne:{},
 }
 
 const reducer=(state=init, action)=>{
