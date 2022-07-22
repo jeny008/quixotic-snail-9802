@@ -1,8 +1,9 @@
 const DataModel = require("../models/Product.model");
+const UserModel = require("../models/User.model");
 
 // All Product
 const getAllProducts = async (category) => {
-  if(category){
+  if (category) {
     try {
       const data = await DataModel.find(category);
       return {
@@ -15,33 +16,15 @@ const getAllProducts = async (category) => {
     }
   }
   try {
-    const data = await DataModel.find(category);
+    const data = await DataModel.find();
     return {
       message: "data obtained successfully",
       status: "success",
       data: data,
     };
-const getAllProducts = async (Category) => {
-  try {
-    if (Category === null) {
-      const data = await DataModel.find();
-      return {
-        message: "data obtained successfully",
-        status: "success",
-        data: data,
-      };
-    } else {
-      const data = await DataModel.find({ Category });
-      return {
-        message: "data obtained successfully",
-        status: "success",
-        data: data,
-      };
-    }
   } catch (err) {
     return { message: "something went wrong", status: "error", data: null };
   }
-  
 };
 
 // Single product
@@ -58,17 +41,66 @@ const getProducts = async (id) => {
   }
 };
 
-const addToCart = async (id) => {
+const addToCart = async (id, qty, mobile) => {
   try {
-    const data = await Model.findById(id);
+    const data = await DataModel.findById(id);
+    await UserModel.updateOne(
+      { mobile },
+      { $push: { Cart: { productId: data._id, quantity: qty } } }
+    );
     return {
-      message: "data obtained successfully",
+      message: "item added to cart",
       status: "success",
-      data: data,
+
     };
   } catch (err) {
-    return { message: "something went wrong", status: "error", data: null };
+    return { message: "something went wrong", status: "error" };
   }
 };
 
-module.exports = { getAllProducts, getProducts, addToCart };
+const increaseQunatity = async (id, mobile) => {
+  try {
+    await UserModel.updateOne(
+      { mobile, "Cart.productId": id },
+      {
+        $inc: {
+          "Cart.$.quantity": 1,
+        },
+      }
+    );
+    return {
+      message: "quantity increased successfully",
+      status: "success",
+    };
+  } catch (err) {
+    return { message: "something went wrong", status: "error" };
+  }
+};
+
+const decreaseQuantity = async (id, mobile) => {
+  try {
+    await UserModel.updateOne(
+      { mobile, "Cart.productId": id },
+      {
+        $inc: {
+          "Cart.$.quantity": -1,
+        },
+      }
+    );
+    return {
+      message: "quantity decreased successfully",
+      status: "success",
+    };
+  } catch (err) {
+    return { message: "something went wrong", status: "error" };
+  }
+};
+
+
+module.exports = {
+  getAllProducts,
+  getProducts,
+  addToCart,
+  decreaseQuantity,
+  increaseQunatity,
+};

@@ -34,14 +34,7 @@ const loginUser = async (otp) => {
     if (value === null) {
       return { message: "wrong otp", status: "failed" };
     } else {
-      const token = jwt.sign(
-        {
-          //no -> mobile
-          no: value,
-        },
-        process.env.SECRET_KEY
-      );
-      return { message: "login success", status: "success", token };
+      return { message: "login success", status: "success", value };
     }
   } catch (err) {
     return { message: "something went wrong", status: "error" };
