@@ -3,6 +3,7 @@ import { ADD_PRODUCT, DECREMENT_QTY, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OT
 
 const init={
     ProductsData:[],
+    productOne:{},
     Auth:[]
 }
 
