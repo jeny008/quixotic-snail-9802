@@ -1,10 +1,25 @@
-import React from "react";
+import { Link } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./navbar.module.css";
 
 export const Navbar = () => {
+  const [SearchText, setSearchText] = useState("")
   
   const navigate  = useNavigate()
+  const handleSearch =()=>{
+    console.log(SearchText);
+  }
+  const handleSelect =(e)=>{
+      // console.log(e.target.value)
+      navigate("/products")
+  }
+  const Scrool =()=>{
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   return (
     <div>
@@ -18,25 +33,26 @@ export const Navbar = () => {
         <div>
           <div className={styles.userLocation}>
             <span>
-              <i className="fa-solid fa-phone"></i> 656465415645456
+              <i className="fa-solid fa-phone"></i>  1860 123 1000
             </span>
             <span>
-              <i className="fa-solid fa-location-dot"></i> 52125 Bengaluru
+              <i className="fa-solid fa-location-dot"></i> 560004 Bangaluru
             </span>
-            <span>
+            <span onClick={()=>navigate("/login")}>
               <i className="fa-regular fa-user"></i> login/signup
-            </span>{" "}
+            </span>
             <div></div>
           </div>
           <div className={styles.search_cart}>
             <div>
               <input
+              style={{outline:"solid 1px #84c225"}}
                 type="text"
-                name=""
-                id=""
+                value={SearchText}
+                onChange={(e)=>setSearchText(e.target.value)}
                 placeholder="Search for products.."
               />
-              <button>
+              <button onClick={handleSearch}>
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
@@ -54,17 +70,23 @@ export const Navbar = () => {
         </div>
       </div>
       <div className={styles.catAndoffer}>
-        <select name="" id="">
-          <option value="">SHOP BY CATOGERY</option>
+        <select onChange={handleSelect}>
+          <option value="#">SHOP BY CATOGERY</option>
+          <option value="products">Fruit and vegetable</option>
+          <option value="products">Bakery and Dairy</option>
+          <option value="products">Foodgrain, oil and masala</option>
+          <option value="products">Baverage</option>
+          <option value="products">Snakes and branded foods</option>
+          <option value="products">Clean and Households</option>
         </select>
         <button>
-          {" "}
-          <i className="fa-solid fa-diamond"></i> Offers
+          <i className="fa-solid fa-diamond" ></i> Offers
         </button>
         <button>
-          <i className="fa-solid fa-shop"></i> BB Speciality
+          <i className="fa-solid fa-shop" ></i> BB Speciality
         </button>
       </div>
+      <button onClick={Scrool} className={styles.scroll} ><i className="fa-solid fa-angle-up"></i></button>
     </div>
   );
 };

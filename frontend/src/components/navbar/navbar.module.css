@@ -63,11 +63,16 @@
   border: solid 1px rgb(235, 235, 235);
   margin: auto 7%;
   text-align: left;
-  border: solid gray;
+  border: solid gainsboro 1px;
 }
 .catAndoffer select {
   background-color: #84c225;
   color: white;
+}
+.catAndoffer option{
+  color: black;
+  background-color: white;
+  margin-top: 20px;
 }
 
 .catAndoffer select,
@@ -80,4 +85,13 @@
 .catAndoffer button:hover {
   background-color: #84c225;
   color: white;
+}
+
+.scroll{
+  position: fixed;
+  background-color: #84c225;
+  color: white;
+  top:90%;
+  padding: 5px 15px;
+  left: 95%;
 }
