@@ -11,6 +11,7 @@ const userRouter = Router();
 //send otp
 userRouter.post("/login", async (req, res) => {
   const { mobile } = req.body;
+  console.log(mobile);
   if (mobile.toString().length !== 10) {
     return res.status(200).send({ message: "Invalid Mobile Number" });
   }

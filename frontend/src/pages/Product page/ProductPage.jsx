@@ -4,7 +4,9 @@ import Categories from './Categories'
 import { Box, Button, Center, Grid, Image, Img, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GetProductsData } from '../../redux/actions/action'
+import { Add_To_Cart, GetProductsData } from '../../redux/actions/action'
+import { useAlert } from 'react-alert'
+import { useNavigate } from 'react-router-dom'
 const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg"
 
 
@@ -12,22 +14,18 @@ const ProductPage = () => {
   const ProductsData=useSelector((state)=>state.Products.ProductsData)
   console.log(ProductsData);
   const dispatch=useDispatch()
+  const alert = useAlert();
+  const navigate=useNavigate()
   useEffect(()=>{
     dispatch(GetProductsData())
   },[dispatch])
-
   const handleCart=(Id)=>{
-    console.log(Id);
-  }
+    dispatch(Add_To_Cart(Id,navigate,alert))
 
-  const HandleIncrement=()=>{
-    console.log(1);
   }
-
-  const HandleDecrement=()=>{
-    console.log(-1);
-  }
-
+  // if(ProductsData.length===0){
+  //   alert.show("No Data Found Pls Search For Another Category")
+  // }
   return (
     <Box>
       <Box>
@@ -55,7 +53,7 @@ const ProductPage = () => {
           <Box>
             <Grid className='products-scr' display="grid" gridTemplateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)",lg:"repeat(4,1fr)"}}  >
                 {ProductsData.map((item)=>( 
-                  <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo} handleCartData={handleCart} HandleIncrementQty={HandleIncrement} HandleDecrementQty={HandleDecrement}/>
+                  <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo} handleCartData={handleCart}  />
                 ))}
             </Grid>
           </Box>
@@ -66,7 +64,7 @@ const ProductPage = () => {
 }
 export default ProductPage
 
-const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData,HandleIncrementQty,HandleDecrementQty})=>{
+export const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData,HandleIncrementQty,HandleDecrementQty})=>{
   return(
     <>
       <Box key={Id} className="component">
@@ -74,17 +72,14 @@ const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData,HandleInc
         <Image src={Logo} className="Logo"/>
         <Box className="Recommended" fontSize={{ base: '10px', md: '12px', lg: '15px' }}>Recommended</Box>
         <Text className='Brand' fontSize={{ base: '10px', md: '12px', lg: '15px' }}>{Brand}</Text>
-        <Text className='Name' fontSize={{ base: '10px', md: '12px', lg: '15px' }}>{name}-{kg}</Text>
+        <Text className='Name' fontSize={{ base: '10px', md: '12px', lg: '15px' }} height={10}>{name}-{kg}</Text>
         <Box className='Cost'>
           <Text className='MRP' fontSize={{ base: '10px', md: '12px', lg: '15px' }}>MRP</Text>
           <Box className='Strike' fontSize={{ base: '10px', md: '12px', lg: '15px' }}>{sprice}</Box>
           <Box fontSize={{ base: '10px', md: '12px', lg: '15px' }}>Rs {mrp}</Box>
         </Box>
         <Box className='AddtoCart'>
-          <Button onClick={HandleIncrementQty}>+</Button>
-          <Text className='count'>1</Text>
-          <Button onClick={HandleDecrementQty}>-</Button>
-          <Button onClick={()=>handleCartData(Id)}>Add</Button>
+          <Button onClick={()=>handleCartData(Id)} pl="8" pr={8}>Add To Cart</Button>
         </Box>
       </Box>
     </>

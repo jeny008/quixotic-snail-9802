@@ -22,10 +22,11 @@ const getAllProducts = async (category) => {
       status: "success",
       data: data,
     };
-  } catch (err) {
+  }
+  catch (err) {
     return { message: "something went wrong", status: "error", data: null };
   }
-};
+}
 
 // Single product
 const getProducts = async (id) => {

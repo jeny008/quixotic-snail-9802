@@ -5,11 +5,13 @@ import "./Categories.css"
 import { useSearchParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { GetProductsData } from '../../redux/actions/action'
+import { useAlert } from 'react-alert'
 
 const Categories = () => {
     const [SearchParams,setSearchParams]=useSearchParams()
     const [categoriesData,setcategoriesData]=useState(SearchParams.getAll("Category")||[])
     const dispatch=useDispatch()
+    const alert = useAlert();
     const handlecategoriesData=(value)=>{
         setcategoriesData(value)
     }
@@ -17,9 +19,8 @@ const Categories = () => {
     console.log(categoriesData);
     useEffect(()=>{
         setSearchParams({Category:categoriesData})
-        let mainParams={Category:SearchParams.getAll("Category")}
-        dispatch(GetProductsData(mainParams))
-    },[categoriesData,SearchParams,dispatch,setSearchParams])
+        dispatch(GetProductsData({Category:categoriesData},alert))
+    },[categoriesData,SearchParams,dispatch,setSearchParams,alert])
   return (
     <Box >
         <CheckboxGroup colorScheme='green' defaultValue={categoriesData} onChange={handlecategoriesData}>

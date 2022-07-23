@@ -1,6 +1,22 @@
 import React, { useState } from "react";
+import { getOne, GetProductsData } from "../../redux/actions/action";
+// import {
+//   List,
+//   ListItem,
+//   ListIcon,
+//   OrderedList,
+//   UnorderedList,
+// } from '@chakra-ui/react'
+// {
+/* <UnorderedList>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</UnorderedList> */
+// }
+// import Button from '@mui/material/Button';
 import {
-  border,
   Box,
   Button,
   Popover,
@@ -12,6 +28,7 @@ import {
   Radio,
   Text,
 } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import styled from "../ProductDetails/productDetails.module.css";
 import { useEffect } from "react";
 import axios from "axios";
@@ -21,7 +38,6 @@ import { useParams } from "react-router-dom";
 export const ProductDetails = () => {
   const { id } = useParams();
   console.log(id);
-
   const [count, setcount] = useState(1);
   const [productDetail, setproductDetail] = useState({});
   console.log("productDetail", productDetail);
@@ -43,6 +59,7 @@ export const ProductDetails = () => {
     setcount(count + 1);
   };
   return (
+
     <div className={styled.cantainer}>
       <div className={styled.flexdiv}>
         <p style={{ fontSize: "12px", marginTop: "25px" }}>
@@ -55,7 +72,6 @@ export const ProductDetails = () => {
           <p
             style={{
               color: "color: #999",
-              // marginTop: "5px",
               textAlign: "center",
             }}
           >
@@ -67,6 +83,7 @@ export const ProductDetails = () => {
         </div>
       </div>
       {/* <hr className={styled.hr} /> */}
+
       <div className={styled.bothdiv}>
         <div className={styled.leftdiv}>
           <span>Category</span>
@@ -109,6 +126,7 @@ export const ProductDetails = () => {
                 marginTop: "25px",
                 // marginLeft: "25px"
               }}
+
               src={productDetail.Image_url}
               alt=""
             />
@@ -153,6 +171,7 @@ export const ProductDetails = () => {
               }}
             >
               MRP:Rs {productDetail.Price * count}
+
             </p>
             <h3
               style={{
@@ -161,6 +180,7 @@ export const ProductDetails = () => {
                 fontFamily: "sans-serif",
               }}
             >
+
               Price:Rs {productDetail.Price * count}(Rs.7.8/100g)
             </h3>
             <p
@@ -401,5 +421,6 @@ export const ProductDetails = () => {
       </div>
     </div>
     // }
+
   );
 };
