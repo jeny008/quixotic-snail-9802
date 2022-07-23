@@ -79,3 +79,49 @@
   background-color: #84c225;
   color: white;
 }
+.login{
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 421px) and (max-width: 720px) {
+  .cart i {
+    font-size: 20px;
+    color: rgb(255, 78, 78);
+    margin-right: 10px;
+  }
+  .catAndoffer{
+    display: none;
+  }
+  .userLocation span:nth-child(1){
+    display: none;
+  }
+  .userLocation span:nth-child(2){
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 420px) {
+  .cart i {
+    font-size: 20px;
+    color: rgb(255, 78, 78);
+    margin-right: 10px;
+  }
+  .catAndoffer{
+    display: none;
+  }
+  .userLocation span:nth-child(1){
+    display: none;
+  }
+  .userLocation span:nth-child(2){
+    display: none;
+  }
+  .search_cart_inp{
+    display: none;
+  }
+  .login{
+    visibility: visible;
+  }
+  .login_main{
+    display: none;
+  }
+}
