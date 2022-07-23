@@ -13,7 +13,7 @@ const sendOtp = async (mobile) => {
         host: "127.0.0.1",
         port: 6379,
       });
-      client.set(otp, mobile, "ex", 10000);
+      client.set(otp, mobile, "ex", 60);
       return { message: "otp sent", status: "success", otp };
     } else {
       return { message: "user does not exist", status: "failed" };

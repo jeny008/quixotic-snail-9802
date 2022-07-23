@@ -11,7 +11,6 @@ const userRouter = Router();
 //send otp
 userRouter.post("/login", async (req, res) => {
   const { mobile } = req.body;
-  console.log(mobile);
   if (mobile.toString().length !== 10) {
     return res.status(200).send({ message: "Invalid Mobile Number" });
   }
@@ -34,7 +33,7 @@ userRouter.post("/login/otp", async (req, res) => {
     return res.status(201).send({ message, status });
   } else {
     return res
-      .cookie("auth", value, { httpOnly: true, secure: false })
+      .cookie("auth", value, { httpOnly: true, secure: false, maxAge: 360000 })
       .status(200)
       .send({ message, status });
   }
@@ -60,17 +59,13 @@ userRouter.post("/signup", async (req, res) => {
 });
 
 //logout user
-userRouter.post("/logout", async (req, res) => {
-  try {
-    res.clearCookie("TOKEN");
-    return res
-      .status(200)
-      .send({ message: "user loggedout successfully", status: "success" });
-  } catch (err) {
-    return res
-      .status(404)
-      .send({ message: "something went wrong", status: "error" });
-  }
+userRouter.get("/logout", async (req, res) => {
+  res
+    .cookie("auth", "", { httpOnly: true, secure: false, maxAge: 0 })
+
+  return res
+    .status(200)
+    .send({ message: "user loggedout successfully", status: "success" });
 });
 
 module.exports = userRouter;

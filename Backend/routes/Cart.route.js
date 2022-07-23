@@ -7,7 +7,7 @@ const cartRouter = Router();
 cartRouter.get("/", async (req, res) => {
   const mobile = req.cookies.auth;
   const { user } = await authenticate(mobile);
-  if (user.length === 0) {
+  if (user === undefined || user.length === 0) {
     return res
       .status(401)
       .send({ message: "unauthorised user", status: "failed" });
@@ -18,6 +18,5 @@ cartRouter.get("/", async (req, res) => {
   }
   return res.status(200).send({ message, status, data });
 });
-
 
 module.exports = cartRouter;

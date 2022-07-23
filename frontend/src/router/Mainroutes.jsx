@@ -5,7 +5,6 @@ import Otp from "../components/Auth/Otp";
 import UserDetails from "../components/Auth/Sigup";
 import { FooterNew } from "../components/footer/FooterNew";
 import { Navbar } from "../components/navbar/Navbar";
-
 import { Home } from "../pages/Home/Home";
 import { Cart } from "../pages/Payment/Cart";
 import ProductPage from "../pages/Product page/ProductPage";

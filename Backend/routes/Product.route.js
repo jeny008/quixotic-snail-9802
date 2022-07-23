@@ -39,7 +39,7 @@ productRouter.get("/:id/addtocart", async (req, res) => {
   const { id } = req.params;
   const { qty } = 1;
   const { user } = await authenticate(mobile);
-  if (user.length === 0) {
+  if (user === undefined || user.length === 0) {
     return res
       .status(401)
       .send({ message: "unauthorised user", status: "failed" });

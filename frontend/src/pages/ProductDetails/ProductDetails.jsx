@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { getOne, GetProductsData } from "../../redux/actions/action";
+import {
+  Add_To_Cart,
+  getOne,
+  GetProductsData,
+} from "../../redux/actions/action";
+import { useAlert } from "react-alert";
 // import {
 //   List,
 //   ListItem,
@@ -33,31 +38,32 @@ import styled from "../ProductDetails/productDetails.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { ProductSlider } from "../../components/productslider/ProductSlider";
-
+import { useNavigate, useParams } from "react-router-dom";
 export const ProductDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
+  const isLogin = localStorage.getItem("login");
   const [count, setcount] = useState(1);
   const [productDetail, setproductDetail] = useState({});
-  console.log("productDetail", productDetail);
+  // console.log("productDetail", productDetail);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const alert = useAlert();
   useEffect(() => {
     axios
       .get("http://localhost:8080/BigBasket/product")
       .then(({ data }) => {
-        console.log("data", data.data);
-        let prodDet = data.data.filter((elem) => elem._id == id)[0];
-        console.log("prodDet", prodDet);
+        // console.log("data", data.data);
+        let prodDet = data.data.filter((elem) => elem._id === id)[0];
+        // console.log("prodDet", prodDet);
         setproductDetail(prodDet);
       })
       .catch((err) => console(err));
   }, [dispatch]);
 
   const handleclick = () => {
-    console.log("hello");
-    setcount(count + 1);
+    dispatch(Add_To_Cart(id, navigate, alert, isLogin));
   };
   return (
     <div className={styled.cantainer}>
