@@ -149,8 +149,11 @@ export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
         if("item added to cart"===res.data.message && isLogin==="true"){
             alert.success("Product Added To cart")
         }
-        else if("item added to cart"===res.data.message && !isLogin==="true"){
+        else if("item added to cart"===res.data.message && !isLogin){
             alert.error("Please Login First")
+            setTimeout(()=>{
+                navigate("/login")
+            },1000)
         }
         dispatch(AddProductToCart(res.data))
     })
