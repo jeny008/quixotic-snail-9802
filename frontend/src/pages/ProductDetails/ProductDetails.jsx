@@ -38,82 +38,95 @@ import { useParams } from "react-router-dom";
 export const ProductDetails = () => {
   const { id } = useParams();
   console.log(id);
-  
   const [count, setcount] = useState(1);
   const [productDetail, setproductDetail] = useState({});
+  console.log("productDetail", productDetail);
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get("http://localhost:8080/BigBasket/product")
-    .then(({data})=>{
-      console.log(data.data)
-    let prodDet = data.data.filter((elem)=>elem._id==id)[0];
-    setproductDetail(prodDet)
-
-
-    }).catch(err=>console(err))
-    
-
-    // let prod = Productsdetailsdata.filter((elem) => elem._id === id);
-    // setproductDetail(prod[0]);
-    // console.log(productDetail);
+    axios
+      .get("http://localhost:8080/BigBasket/product")
+      .then(({ data }) => {
+        console.log("data", data.data);
+        let prodDet = data.data.filter((elem) => elem._id == id)[0];
+        console.log("prodDet", prodDet);
+        setproductDetail(prodDet);
+      })
+      .catch((err) => console(err));
   }, [dispatch]);
 
-  const handlechange = () => {
+  const handleclick = () => {
     console.log("hello");
     setcount(count + 1);
   };
   return (
-    // {isloading ? <h1>Loading...</h1> : 
+
     <div className={styled.cantainer}>
       <div className={styled.flexdiv}>
-        <div className={styled.cantainerdiv}>
-          <p style={{fontSize:"12px"}}>
-            HOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRUITS &
-            VEGETABLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRESH
-            VEGETABLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POTATO, ONION &
-            TOMATO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRESHO ONION
-          </p>
-        </div>
-
+        <p style={{ fontSize: "12px", marginTop: "25px" }}>
+          HOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRUITS &
+          VEGETABLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRESH
+          VEGETABLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POTATO, ONION &
+          TOMATO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FRESHO ONION
+        </p>
         <div className={styled.icon}>
           <p
             style={{
               color: "color: #999",
-              marginTop: "5px",
               textAlign: "center",
             }}
           >
             Share On
           </p>
           <i style={{ color: "blue" }} class="fa-brands fa-facebook"></i>
-          <i style={{ color: "drakblue" }} class="fa-brands fa-twitter"></i>
+         <i style={{ color: "drakblue" }} class="fa-brands fa-twitter"></i>
           <i style={{ color: "red " }} class="fa-solid fa-envelope"></i>
         </div>
       </div>
-      <hr className={styled.hr} />
+      {/* <hr className={styled.hr} /> */}
+
       <div className={styled.bothdiv}>
         <div className={styled.leftdiv}>
           <span>Category</span>
           <hr style={{ borderBottom: "1px solid gray" }} />
-          <h3>Fruits and Vegetables</h3>
-          <a href="">Beans Brinjals & okra</a>
-          <a href="">Cabbage and Cauliflower</a>
-          <a href="">Leafy Vegetables</a>
-          <a href="">Root Vegetables</a>
-          <a href="">Beans Brinjals & okra</a>
-          <a href="">Cabbage and Cauliflower</a>
-          <a href="">Cabbage and Cauliflower</a>
-          <a href="">Leafy Vegetables</a>
+          <h3 style={{ marginLeft: "10px" }}>Fruits and Vegetables</h3>
+          <hr style={{ borderBottom: "1px solid" }} />
+          <div style={{ marginLeft: "15px" }}>
+            <a href="">Beans Brinjals & okra</a>
+            <br />
+            <a href="">Cabbage and Cauliflower</a>
+            <br />
+            <a href="">Leafy Vegetables</a>
+            <br />
+            <a href="">Root Vegetables</a>
+            <br />
+            <a href="">Beans Brinjals & okra</a>
+            <br />
+            <a href="">Cabbage and Cauliflower</a>
+            <br />
+            <a href="">Cabbage and Cauliflower</a>
+            <br />
+            <a href="">Leafy Vegetables</a>
+          </div>
           <h3>Brands</h3>
-          <a href="">FRESHO</a>
-          <a href="">Fresho Potato onion & tomato</a>
+          <hr style={{ borderBottom: "1px solid" }} />
+          <div style={{ marginLeft: "15px" }}>
+            <a href="">FRESHO</a>
+            <br />
+            <a href="">Fresho Potato onion & tomato</a>
+          </div>
         </div>
         <div className={styled.v1}></div>
         <div className={styled.rightdiv}>
           {/* <--------------leftpart */}
           <div className={styled.imgdiv}>
             <img
-              style={{ width: "350px", height: "350px" }}
+              style={{
+                width: "400px",
+                height: "300px",
+                marginTop: "25px",
+                // marginLeft: "25px"
+              }}
+
               src={productDetail.Image_url}
               alt=""
             />
@@ -157,7 +170,8 @@ export const ProductDetails = () => {
                 fontFamily: "sans-serif",
               }}
             >
-              MRP:Rs {productDetail.Price*count}
+              MRP:Rs {productDetail.Price * count}
+
             </p>
             <h3
               style={{
@@ -166,7 +180,8 @@ export const ProductDetails = () => {
                 fontFamily: "sans-serif",
               }}
             >
-              Price:Rs {productDetail.Price*count}(Rs.7.8/100g)
+
+              Price:Rs {productDetail.Price * count}(Rs.7.8/100g)
             </h3>
             <p
               style={{
@@ -187,24 +202,83 @@ export const ProductDetails = () => {
             >
               (Inclusive of all taxes)
             </p>
-            {count === 1 && <Text className={styled.count}>1</Text>}
-
-            {count === 1 ? (
-              <Button
-                onClick={handlechange}
-                className={styled.btn}
-                colorScheme="green"
+            {count === 1 && (
+              <Text
+                style={{ border: "1px solid black" }}
+                className={styled.count}
               >
-                ADD TO BASKET
-              </Button>
-            ) : (
-              <Box className="AddtoCart">
-                <Button onClick={() => setcount(count - 1)}>-</Button>
-                <Text className={styled.count}>{count}</Text>
-                <Button onClick={() => setcount(count + 1)}>+</Button>
-              </Box>
+                1
+              </Text>
             )}
-            {/* <Popover>
+            {count === 1 ? (
+              <>
+                <Button
+                  onClick={handleclick}
+                  className={styled.btn}
+                  colorScheme="green"
+                >
+                  ADD TO BASKET
+                </Button>
+                <Popover>
+                  <PopoverTrigger>
+                    <Button className={styled.btn1}>SAVE</Button>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Save to a list!</PopoverHeader>
+                    <Button style={{ background: "#666666", color: "white" }}>
+                      +CREATE LIST
+                    </Button>
+                  </PopoverContent>
+                </Popover>
+                <h4 style={{ color: "darkgray" }}>
+                  <i
+                    style={{ fontSize: "25px", color: "darkgray" }}
+                    class="fa-solid fa-truck"
+                  ></i>{" "}
+                  Standard: Today 9:00AM - 11:00AM
+                </h4>
+              </>
+            ) : (
+              <>
+                <Box className="AddtoCart">
+                  <Button
+                    style={{ fontSize: "30px", fontFamily: "sans-serif" }}
+                    onClick={() => setcount(count - 1)}
+                  >
+                    -
+                  </Button>
+                  <Text
+                    style={{ marginTop: "-1px", border: "1px solid black" }}
+                    className={styled.count}
+                  >
+                    {count}
+                  </Text>
+                  <Button
+                    style={{ fontSize: "30px", fontFamily: "sans-serif" }}
+                    onClick={() => setcount(count + 1)}
+                  >
+                    +
+                  </Button>
+                </Box>
+                <h4 style={{ color: "darkgray" }}>
+                  <i
+                    style={{
+                      fontSize: "25px",
+                      marginTop: "18px",
+                      color: "darkgray",
+                    }}
+                    class="fa-solid fa-truck"
+                  ></i>{" "}
+                  Standard: Today 9:00AM - 11:00AM
+                </h4>
+              </>
+            )}
+
+            {/* comments out line  */}
+            <div>
+              {/* <Popover>
               <PopoverTrigger>
                 <Button className={styled.btn1}>SAVE</Button>
               </PopoverTrigger>
@@ -217,7 +291,7 @@ export const ProductDetails = () => {
                 </Button>
               </PopoverContent>
             </Popover> */}
-            {/* <div>
+              {/* <div>
               <p style={{marginTop: "10px" }}>
               <i style={{width:"30px",fontSize:"20px"}} class="fa-solid fa-truck"></i>{" "}
                 Standard: Today 9:00AM - 11:00AM
@@ -319,6 +393,7 @@ export const ProductDetails = () => {
                 </div>
               </div>
             </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -326,21 +401,26 @@ export const ProductDetails = () => {
         <h4 style={{ fontSize: "30px" }}>About The Product</h4>
         <hr />
         <ul>
-          <li style={{ fontSize: "20px" }}>{productDetail.Description}</li>
+          <li style={{ fontSize: "15px" }}>{productDetail.Description}</li>
           <hr />
-          <li style={{ fontSize: "20px" }}>{productDetail.Title}</li>
+          <li style={{ fontSize: "15px" }}>{productDetail.Title}</li>
           <hr />
         </ul>
-        <h4 style={{ fontSize: "20px" }}>Other Product Info</h4>
+        <h4 style={{ fontSize: "15px" }}>Other Product Info</h4>
         <hr />
         <ul>
-          <li style={{ fontSize: "20px" }}>EAN Code: 10000150</li>
+          <li style={{ fontSize: "15px" }}>EAN Code: 10000150</li>
           <hr />
-          <li style={{ fontSize: "20px" }}>Country of origin: India</li>
+          <li style={{ fontSize: "15px" }}>Country of origin: India</li>
         </ul>
         <hr />
       </div>
+      <h1 style={{ fontSize: "25px" }}>Rating and Reviews</h1>
+      <div className={styled.ratingdiv}>
+        <p></p>
+      </div>
     </div>
-// }
+    // }
+
   );
 };

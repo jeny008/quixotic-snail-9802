@@ -11,6 +11,7 @@
     width: 50%;
     height: 30px;
     margin-top: 20px;
+
  }
  leftdiv,span:hover{
    color: #84C244;
@@ -19,6 +20,7 @@
    color: #84C244;
  }
  .v1{
+   border-left: 1px solid gray;
    border-left: 3px solid gray;
    height: 200px;
    margin: auto;
@@ -57,7 +59,6 @@
     /* border: 1px solid red; */
  }
  .imgdiv{
-    /* border: 1px solid red; */
     width: 50%;
  }
  .fresho{
@@ -75,7 +76,7 @@
     /* border: 1px solid red; */
  }
  .btn1{
-   margin-top: -19%;
+   margin-top: -15%;
     margin-left: 20px;
     width: 20%;
     /* color: skyblue; */
@@ -110,18 +111,23 @@
    margin-right: 5%;
    margin-top: 20px;
    align-items: center;
-   border: 1px solid red;
+
  }
  .icon > i {
    /* margin-top: 14px; */
    margin-left: 10px;
  }
- /* .secondcontainer{
 
- } */
  .vegetarian_logo{
    /* border: 1px solid red; */
    width: 30px;
    height: 30px;
    margin-top:-30px;
  }
+.ratingdiv{
+   width: 100%;
+    margin: auto;
+    border: 1px solid gray;
+    /* height: 250px; */
+}
+
