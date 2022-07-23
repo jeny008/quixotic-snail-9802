@@ -22,9 +22,11 @@
  }
  .v1{
    border-left: 1px solid gray;
-   border-left: 3px solid gray;
-   height: 200px;
-   margin: auto;
+ }
+ .comment{
+   width: 35%;
+   height: 250px;
+   border: 1px solid black;
  }
  .hr{
     margin-top: 15px;
@@ -49,6 +51,7 @@
  }
  .leftdiv{
     width: 25%;
+    text-align: left;
     /* border: 1px solid red; */
  }
  .rightdiv{
@@ -64,8 +67,12 @@
  }
  .fresho{
     /* border: 1px solid red; */
+    text-align: left;
     width: 60%;
     height: 600px;
+ }
+ .secondcontainer{
+   text-align: left;
  }
  .ptag{
     color: red;
@@ -130,5 +137,6 @@
     margin: auto;
     border: 1px solid gray;
     /* height: 250px; */
+    /* text-align: left; */
 }
 

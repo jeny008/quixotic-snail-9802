@@ -39,7 +39,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
 export const ProductDetails = () => {
   const { id } = useParams();
   // console.log(id);
@@ -279,125 +278,6 @@ export const ProductDetails = () => {
                 </h4>
               </>
             )}
-
-            {/* comments out line  */}
-            <div>
-              {/* <Popover>
-              <PopoverTrigger>
-                <Button className={styled.btn1}>SAVE</Button>
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>Save to a list!</PopoverHeader>
-                <Button style={{ background: "#666666", color: "white" }}>
-                  +CREATE LIST
-                </Button>
-              </PopoverContent>
-            </Popover> */}
-              {/* <div>
-              <p style={{marginTop: "10px" }}>
-              <i style={{width:"30px",fontSize:"20px"}} class="fa-solid fa-truck"></i>{" "}
-                Standard: Today 9:00AM - 11:00AM
-              </p>
-              <p>Pack Sizes</p>
-              <div>
-                <div
-                  style={{
-                    marginTop: "10px",
-                    alignItems: "center",
-                    height: "40px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "80%",
-                    border: "1px solid red",
-                  }}
-                >
-                  <p style={{ fontSize: "20px" }}>weight</p>
-                  <p style={{ fontSize: "20px" }}>price</p>
-                  <p
-                    style={{
-                      background: "#84C244",
-                      width: "8%",
-                      height: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    <i
-                      style={{
-                        marginLeft: "5px",
-                        marginTop: "10px",
-                        fontSize: "25px",
-                      }}
-                      class="fa-solid fa-check"
-                    ></i>
-                  </p>
-                </div>
-                <div
-                  style={{
-                    marginTop: "10px",
-                    alignItems: "center",
-                    height: "40px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "80%",
-                    border: "1px solid red",
-                  }}
-                >
-                  <p style={{ fontSize: "20px" }}>weight</p>
-                  <p style={{ fontSize: "20px" }}>price</p>
-                  <p
-                    style={{
-                      background: "#84C244",
-                      width: "8%",
-                      height: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    <i
-                      style={{
-                        marginLeft: "5px",
-                        marginTop: "10px",
-                        fontSize: "25px",
-                      }}
-                      class="fa-solid fa-check"
-                    ></i>
-                  </p>
-                </div>
-                <div
-                  style={{
-                    marginTop: "10px",
-                    alignItems: "center",
-                    height: "40px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "80%",
-                    border: "1px solid red",
-                  }}
-                >
-                  <p style={{ fontSize: "20px" }}>weight</p>
-                  <p style={{ fontSize: "20px" }}>price</p>
-                  <p
-                    style={{
-                      background: "#84C244",
-                      width: "8%",
-                      height: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    <i
-                      style={{
-                        marginLeft: "5px",
-                        marginTop: "10px",
-                        fontSize: "25px",
-                      }}
-                      class="fa-solid fa-check"
-                    ></i>
-                  </p>
-                </div>
-              </div>
-            </div> */}
-            </div>
           </div>
         </div>
       </div>
@@ -419,9 +299,9 @@ export const ProductDetails = () => {
         </ul>
         <hr />
       </div>
-      <h1 style={{ fontSize: "25px" }}>Rating and Reviews</h1>
+      <h1 style={{ fontSize: "25px",textAlign:"left" }}>Rating and Reviews</h1>
       <div className={styled.ratingdiv}>
-        <p></p>
+        {/* <p className={styled.comment}></p> */}
       </div>
     </div>
     // }
