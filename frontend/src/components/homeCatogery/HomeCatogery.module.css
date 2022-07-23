@@ -18,6 +18,7 @@
     height: 420px;
     width: 50%;
     border: solid gainsboro 1px;
+    cursor: pointer;
 }
 .mainOuter > div:first-child img{
     width: 100%;
@@ -32,6 +33,7 @@
 }
 #gridDiv > div{
 border: solid gainsboro 1px;
+cursor: pointer;
 }
 #gridDiv > div img{
     width: 100%;
