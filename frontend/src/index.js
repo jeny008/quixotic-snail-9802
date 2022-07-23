@@ -1,3 +1,4 @@
+
 import reportWebVitals from "./reportWebVitals";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -10,7 +11,6 @@ import { extendTheme } from '@chakra-ui/react'
 import { Store } from './redux/store';
 import { positions, Provider as Providers } from "react-alert";
 import AlertTemplate from 'react-alert-template-basic'
-
 // 2. Update the breakpoints as key-value pairs
 const breakpoints = {
   sm: '320px',
