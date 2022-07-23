@@ -39,6 +39,7 @@ productRouter.get("/:id/addtocart", async (req, res) => {
   const { id } = req.params;
   const { qty } = 1;
   const { user } = await authenticate(mobile);
+  console.log(user)
   if (user.length === 0) {
     return res
       .status(401)
