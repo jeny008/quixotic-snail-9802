@@ -27,7 +27,7 @@ export const ProductSlider = ({ProductsData}) => {
         <Carousel breakPoints={breakPoints}>
           {ProductsData.map((item) => (
             <Box
-              onClick={() => navigate(`/produts/productDetails/${item._id}`)}
+              onClick={() => navigate(`/products/productdetails/${item._id}`)}
               style={{ margin: "0px 3px" }}
               key={item._id}
             >
