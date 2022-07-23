@@ -23,9 +23,6 @@ const ProductPage = () => {
     dispatch(Add_To_Cart(Id,navigate,alert))
 
   }
-  // if(ProductsData.length===0){
-  //   alert.show("No Data Found Pls Search For Another Category")
-  // }
   return (
     <Box>
       <Box>
