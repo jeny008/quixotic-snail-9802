@@ -28,7 +28,7 @@ const cartItems = async (mobile) => {
       }
     }
     return {
-      message: "quantity decreased successfully",
+      message: "cart items received successfully",
       status: "success",
       data,
     };

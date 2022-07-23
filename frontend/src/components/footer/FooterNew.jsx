@@ -14,7 +14,7 @@ import footer from "./paymentopt.jpeg"
 
 export const FooterNew = () => {
   return (
-    <Box width={"75%"} margin="auto">
+    <Box width={"86%"} margin="auto">
       <Flex
         columns={{ base: 1, sm: 2, md: 4 }}
         spacing={0}

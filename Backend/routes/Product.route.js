@@ -37,8 +37,7 @@ productRouter.get("/:id/addtocart", async (req, res) => {
       .send({ message: "session expired", status: "user logged out" });
   }
   const { id } = req.params;
-  console.log(req.body);
-  const { qty } = req.body;
+  const { qty } = 1;
   const { user } = await authenticate(mobile);
   if (user.length === 0) {
     return res
