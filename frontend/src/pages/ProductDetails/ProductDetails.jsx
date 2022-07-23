@@ -5,22 +5,6 @@ import {
   GetProductsData,
 } from "../../redux/actions/action";
 import { useAlert } from "react-alert";
-// import {
-//   List,
-//   ListItem,
-//   ListIcon,
-//   OrderedList,
-//   UnorderedList,
-// } from '@chakra-ui/react'
-// {
-/* <UnorderedList>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-</UnorderedList> */
-// }
-// import Button from '@mui/material/Button';
 import {
   Box,
   Button,
@@ -39,6 +23,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { ProductSlider } from "../../components/productslider/ProductSlider";
 export const ProductDetails = () => {
   const { id } = useParams();
   // console.log(id);
@@ -303,6 +288,7 @@ export const ProductDetails = () => {
       <div className={styled.ratingdiv}>
         {/* <p className={styled.comment}></p> */}
       </div>
+      {/* <ProductSlider ProductsData={ProductsData} /> */}
     </div>
     // }
   );
