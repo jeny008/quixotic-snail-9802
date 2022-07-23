@@ -6,6 +6,8 @@ export const OTPAUTH='OTPAUTH'
 export const INCREMENT_QTY="INCREMENT_QTY"
 export const DECREMENT_QTY="DECREMENT_QTY"
 export const ADD_PRODUCT="ADD_PRODUCT"
+export const LOGOUT="LOGOUT"
+
 
 
 // get Data req from Backend..
@@ -32,6 +34,10 @@ const Increment=(data)=>({
 
 const Decrement=(data)=>({
     type:DECREMENT_QTY,
+    payload:data
+})
+const LogoutUser=(data)=>({
+    type:LOGOUT,
     payload:data
 })
 
@@ -91,6 +97,7 @@ export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
     .then((res)=>{
         console.log(res.data);
         if("login success"===res.data.message){
+            localStorage.setItem("login",true)
             alert.success("Login Success")
             navigate("/")
         }
@@ -133,7 +140,6 @@ export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
 }
 
 export const Add_To_Cart=(_id,navigate,alert)=>(dispatch)=>{
-    console.log(_id,"action");
     axios({
         url:`http://localhost:8080/BigBasket/product/${_id}/addtocart`,
         method:"GET",
@@ -151,5 +157,24 @@ export const Add_To_Cart=(_id,navigate,alert)=>(dispatch)=>{
             navigate("/login")
            },1000)
         }
+    })
+}
+
+export const Logout=()=>(dispatch)=>{
+    axios({
+        url:`http://localhost:8080/BigBasket/logout`,
+        method:"POST",
+    }).then((res)=>{
+        if(res.data.message==="user loggedout successfully"){
+            localStorage.removeItem("login")
+            window.location.reload()
+        }
+        dispatch(LogoutUser(res.data))
+    })
+    .then(()=>{
+        dispatch(getProducts())
+    })
+    .catch((err)=>{
+        console.log(err)
     })
 }
