@@ -4,18 +4,22 @@ import { OTPInput } from "chakra-otp-input";
 import { useState } from 'react';
 import Timer from 'otp-timer';
 import { useDispatch, useSelector } from 'react-redux';
-import { OtpVerification } from '../../redux/actions/action';
+import {  OtpVerification } from '../../redux/actions/action';
+import { useAlert } from 'react-alert';
+import { useNavigate } from 'react-router-dom';
 
 const Otp = () => {
   const [otp,setOtp]=useState({})
   const Auth=useSelector((state)=>state.Products.Auth)
-  console.log(Auth,"hi");
+  const alert=useAlert()
+  const navigate=useNavigate();
+  let Number=localStorage.getItem("Number")
   const dispatch=useDispatch()
   const handleVerify=()=>{
-    dispatch(OtpVerification(otp))
+    dispatch(OtpVerification(otp,alert,navigate))
   }
   const handleClick=()=>{
-    //desired function to be performed on clicking resend button
+    navigate("/login")
   }
   return (
     <Box>
@@ -24,7 +28,7 @@ const Otp = () => {
             <Text style={{"fontSize":20, "fontWeight":"bold", "color":"#a2d05a",paddingBottom:"10%", paddingTop:"5%"}}>Verify Mobile Number</Text>
             </Box>
             <Text style={{"width":"70%", margin:"auto",color:"#beb5b5", fontSize:"90%",paddingBottom:"2%" }}>Please check the OTP sent to your mobile number</Text>
-            <Text style={{fontSize:"90%","fontWeight":"bold", color:"#999", paddingBottom:"2%"}}>9381374502</Text>
+            <Text style={{fontSize:"90%","fontWeight":"bold", color:"#999", paddingBottom:"2%"}}>Mobile : {Number}</Text>
             <Text style={{color:"#999"}}>Enter OTP</Text>
             <Flex pt="28" justify="center" align="center" w="full">
               <FormControl w="60">

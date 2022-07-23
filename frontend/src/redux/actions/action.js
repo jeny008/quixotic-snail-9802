@@ -5,6 +5,7 @@ export const REGISTRATION="REGISTRATION"
 export const OTPAUTH='OTPAUTH'
 export const INCREMENT_QTY="INCREMENT_QTY"
 export const DECREMENT_QTY="DECREMENT_QTY"
+export const ADD_PRODUCT="ADD_PRODUCT"
 
 
 // get Data req from Backend..
@@ -23,10 +24,6 @@ const Register=(details)=>({
     payload:details
 })
 
-const OtpAuth=(details)=>({
-    type:OTPAUTH,
-    payload:details
-})
 
 const Increment=(data)=>({
     type:INCREMENT_QTY,
@@ -38,9 +35,14 @@ const Decrement=(data)=>({
     payload:data
 })
 
+const AddProductToCart=(data)=>({
+    type:ADD_PRODUCT,
+    payload:data
+})
+
 
 //get the products data
-export const GetProductsData=(payload)=>(dispatch)=>{
+export const GetProductsData=(payload,alert)=>(dispatch)=>{
     axios({
         url:'http://localhost:8080/BigBasket/product',
         method:"GET",
@@ -49,6 +51,9 @@ export const GetProductsData=(payload)=>(dispatch)=>{
     })
     .then((res)=>{
         console.log(res.data.data);
+        if(payload && res.data.data.length===0){
+            alert.show("No Data Found Pls Search For Another Category")
+        }
         dispatch(getProducts(res.data.data))
     }).catch((err)=>{
         console.log(err);
@@ -80,12 +85,18 @@ export const NewUserRegistration=(payload)=>(dispatch)=>{
     })
 }
 
-export const OtpVerification=(payload)=>(dispatch)=>{
+export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
     console.log(payload);
     axios.post('http://localhost:8080/BigBasket/login/otp',payload,{withCredentials:true})
     .then((res)=>{
         console.log(res.data);
-        dispatch(OtpAuth(res.data))
+        if("login success"===res.data.message){
+            alert.success("Login Success")
+            navigate("/")
+        }
+        if("wrong otp"===res.data.message){
+            alert.error("Invalid OTP")
+        }
     }).catch((err)=>{
         console.log(err);
     })
@@ -118,5 +129,27 @@ export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
     })
     .catch((err)=>{
         console.log(err)
+    })
+}
+
+export const Add_To_Cart=(_id,navigate,alert)=>(dispatch)=>{
+    console.log(_id,"action");
+    axios({
+        url:`http://localhost:8080/BigBasket/product/${_id}/addtocart`,
+        method:"GET",
+        withCredentials:true
+    }).then((res)=>{
+        if("item added to cart"===res.data.message){
+            alert.success("Product Added To cart")
+        }
+        dispatch(AddProductToCart(res.data))
+    })
+    .catch((err)=>{
+        if("unauthorised user"===err.response.data.message){
+            alert.error("Please Login First")
+           setTimeout(()=>{
+            navigate("/login")
+           },1000)
+        }
     })
 }
