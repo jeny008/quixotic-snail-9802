@@ -10,7 +10,6 @@ import { useAlert } from 'react-alert'
 const Login = () => {
   const Auth=useSelector((state)=>state.Products.Auth)
   const alert = useAlert();
-  console.log(Auth,"ch");
   const [Number,setNumber]=useState({})
   localStorage.setItem("Number",Number.mobile)
   const [message,setMessage]=useState(false)
