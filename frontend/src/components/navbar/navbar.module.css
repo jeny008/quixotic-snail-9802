@@ -51,7 +51,6 @@
   padding: 10px;
   background-color: rgb(238, 238, 238);
   cursor: pointer;
-  border: solid yellow;
 }
 .cart i {
   font-size: 40px;
@@ -63,7 +62,6 @@
   border: solid 1px rgb(235, 235, 235);
   margin: auto 7%;
   text-align: left;
-  border: solid gray;
 }
 .catAndoffer select {
   background-color: #84c225;
