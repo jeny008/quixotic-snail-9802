@@ -9,15 +9,9 @@ import { GetProductsData } from "../../redux/actions/action";
 const Logo =
   "https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg";
 
-export const ProductSlider = () => {
-  const ProductsData = useSelector((state) => state.Products.ProductsData);
-  console.log(ProductsData);
-  const dispatch = useDispatch();
+export const ProductSlider = ({ProductsData}) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    dispatch(GetProductsData());
-  }, [dispatch]);
-
+  
   const breakPoints = [
     { width: 200, itemsToShow: 1, itemsToScroll: 1 },
     { width: 400, itemsToShow: 2, itemsToScroll: 2 },
@@ -27,7 +21,7 @@ export const ProductSlider = () => {
 
   return (
     <div style={{ margin: "1% 7%", border: "solid gainsboro 1px" }}>
-      {ProductsData.length == 0 ? (
+      {ProductsData == undefined ? (
         <Progress size="lg" isIndeterminate />
       ) : (
         <Carousel breakPoints={breakPoints}>
@@ -35,6 +29,7 @@ export const ProductSlider = () => {
             <Box
               onClick={() => navigate(`/produts/productDetails/${item._id}`)}
               style={{ margin: "0px 3px" }}
+              key={item._id}
             >
               <ProdData
                 Id={item._id}

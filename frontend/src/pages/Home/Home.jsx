@@ -31,19 +31,15 @@ import { GetProductsData } from "../../redux/actions/action";
 export const Home = () => {
   const [Readmore, setReadmore] = useState(false);
   const ProductsData = useSelector((state) => state.Products.ProductsData);
-  console.log(ProductsData);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title =
       "Online Grocery Shopping and Online Supermarket in India - bigbasket";
 
-
-      dispatch(GetProductsData({Category:"Fruits_vegetables"}))
-
-  },[dispatch]);
+    dispatch(GetProductsData());
+  }, [dispatch]);
 
   return (
     <div className={styles.home}>
@@ -73,7 +69,7 @@ export const Home = () => {
         <button onClick={() => navigate("/products")}>Show more</button>
       </div>
       <hr />
-      <ProductSlider size={10} />
+      <ProductSlider ProductsData={ProductsData} />
       <p className={styles.secHead}>Bank Offers </p>
       <hr />
       <HomeCardSecII imgData2={bankOffer} />
@@ -83,7 +79,7 @@ export const Home = () => {
         <button>Show more</button>
       </div>
       <hr />
-      <ProductSlider size={10} />
+      <ProductSlider ProductsData={ProductsData} />
 
       <h2 className={styles.secHead}>Top Offers</h2>
       <hr />
