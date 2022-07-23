@@ -10,6 +10,19 @@ import { Cart } from "../pages/Payment/Cart";
 import ProductPage from "../pages/Product page/ProductPage";
 
 export const Mainroutes = () => {
+  return (<>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/products" element={<ProductPage />}></Route>
+      <Route path="/login" element={<Login/>}></Route>
+      <Route path="/signup" element={<UserDetails/>}></Route>
+      <Route path="/otp" element={<Otp/>}></Route>
+      {/* <Route path="/products" element={<Checkout />}></Route> */}
+      {/* <Route path="/payment" element={<Payment />}></Route> */}
+
+    </Routes>
+    <FooterNew/>
   return (
     <>
       <Navbar />

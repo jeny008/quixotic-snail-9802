@@ -12,6 +12,7 @@ const Login = () => {
   const alert = useAlert();
   console.log(Auth,"ch");
   const [Number,setNumber]=useState({})
+  localStorage.setItem("Number",Number.mobile)
   const [message,setMessage]=useState(false)
   const [otp,setOtp]=useState(false)
   const dispatch=useDispatch()
