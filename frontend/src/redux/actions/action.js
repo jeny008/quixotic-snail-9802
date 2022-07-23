@@ -139,14 +139,18 @@ export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
     })
 }
 
-export const Add_To_Cart=(_id,navigate,alert)=>(dispatch)=>{
+export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
     axios({
         url:`http://localhost:8080/BigBasket/product/${_id}/addtocart`,
         method:"GET",
         withCredentials:true
     }).then((res)=>{
-        if("item added to cart"===res.data.message){
+        console.log(res);
+        if("item added to cart"===res.data.message && isLogin==="true"){
             alert.success("Product Added To cart")
+        }
+        else if("item added to cart"===res.data.message && !isLogin==="true"){
+            alert.error("Please Login First")
         }
         dispatch(AddProductToCart(res.data))
     })
@@ -163,7 +167,7 @@ export const Add_To_Cart=(_id,navigate,alert)=>(dispatch)=>{
 export const Logout=()=>(dispatch)=>{
     axios({
         url:`http://localhost:8080/BigBasket/logout`,
-        method:"POST",
+        method:"GET",
     }).then((res)=>{
         if(res.data.message==="user loggedout successfully"){
             localStorage.removeItem("login")
