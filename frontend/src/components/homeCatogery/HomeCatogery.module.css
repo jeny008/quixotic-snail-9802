@@ -37,3 +37,38 @@ border: solid gainsboro 1px;
     width: 100%;
     height: 100%;
 }
+@media (max-width:991px) {
+    .mainOuter > div:first-child{
+        height: 350px;
+        width: 50%;
+    }
+    .mainOuter > div:last-child{
+        height: 350px;
+        width: 48%;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: repeat(2,50%);
+        overflow: hidden;
+        gap: 10px;
+    }
+  } 
+  
+  @media (max-width: 767px) {
+   
+    .mainOuter{
+        display: block;
+        padding: 2px;
+    }
+    .mainOuter > div:first-child{
+        height: 300px;
+        width: 100%;
+    }
+    .mainOuter > div:last-child{
+        height: 300px;
+        width: 100%;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,50%);
+        overflow: hidden;
+    }
+   
+  }
