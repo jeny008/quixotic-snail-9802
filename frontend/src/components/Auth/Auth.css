@@ -1,10 +1,27 @@
 .input::placeholder {
     font-size: 12px;
 }
+.input1::placeholder {
+    font-size: 12px;
+}
+.input1{
+    visibility: hidden;
+}
 .Signup:hover{
     border: Solid #2bec11;
     background-color: #2bec11;
 }
 .pitInp{
     border: 1px solid#2bec11;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 420px) {
+    .input1{
+        visibility: visible;
+        margin-top: -10%;
+    }
+    .full{
+        display:none;
+       visibility: hidden;
+    }
 }
