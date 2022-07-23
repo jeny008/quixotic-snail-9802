@@ -47,7 +47,7 @@ export const Navbar = () => {
               <div>
                 <span>My Basket</span>
                 <br />
-                <span>{"0 item"}</span>
+                <span>{" item"}</span>
               </div>
             </div>
           </div>
