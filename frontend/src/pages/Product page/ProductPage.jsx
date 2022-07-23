@@ -12,6 +12,7 @@ const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/veg
 
 const ProductPage = () => {
   const ProductsData=useSelector((state)=>state.Products.ProductsData)
+  const isLogin=localStorage.getItem("login")
   console.log(ProductsData);
   const dispatch=useDispatch()
   const alert = useAlert();
@@ -20,12 +21,9 @@ const ProductPage = () => {
     dispatch(GetProductsData())
   },[dispatch])
   const handleCart=(Id)=>{
-    dispatch(Add_To_Cart(Id,navigate,alert))
+    dispatch(Add_To_Cart(Id,navigate,alert,isLogin))
 
   }
-  // if(ProductsData.length===0){
-  //   alert.show("No Data Found Pls Search For Another Category")
-  // }
   return (
     <Box>
       <Box>
