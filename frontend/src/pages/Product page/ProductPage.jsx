@@ -62,7 +62,7 @@ const ProductPage = () => {
 }
 export default ProductPage
 
-const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData})=>{
+export const ProdData=({Id,image,name,kg,sprice,mrp,Brand,Logo,handleCartData,HandleIncrementQty,HandleDecrementQty})=>{
   return(
     <>
       <Box key={Id} className="component">

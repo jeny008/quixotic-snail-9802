@@ -28,7 +28,7 @@
 }
 .sectionHeading button {
   color: white;
-  background-color:yellowgreen ;
+  background-color:#84c225 ;
   border: none;
   padding: 3px 20px;
   cursor: pointer;
@@ -37,15 +37,6 @@
 .secHead {
   margin-top: 50px;
   font-size: 30px;
-}
-.topOffer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: auto 7%;
-}
-.topOffer > div img {
-  width: 95%;
-  cursor: pointer;
 }
 .staples {
   display: grid;
@@ -56,8 +47,7 @@
 .staples > div {
   border: solid 1px gainsboro;
 }
-.staples > div:hover,
-.topOffer > div:hover {
+.staples > div:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .staples img {
@@ -72,7 +62,34 @@
   text-align: justify;
   font-size: 15px;
 }
-.bigbasketstory p:first-child {
-  font-size: 35px;
-  margin: 0px;
+.bigbasketstory p:first-child, #readmore {
+  font-size: 30px;
+  margin: 1% 0%;
+}
+
+.bigbasketstory span{
+  color: #84c225;
+  cursor: pointer;
+}
+
+@media (max-width:991px) {
+  .offerBtn img{
+    width: 85%;
+  }
+  .sectionHeading p {
+    margin: 0;
+    font-size: 25px;
+  }
+  .secHead {
+    margin-top: 40px;
+    font-size: 25px;
+  }
+} 
+
+@media (max-width: 767px) {
+  .offerBtn img{
+    width: 90%;
+    font-weight: bold;
+  }
+ 
 }
