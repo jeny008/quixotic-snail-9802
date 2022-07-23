@@ -24,7 +24,7 @@ export const Mainroutes = () => {
 
     </Routes>
     {/* <Checkout/> */}
-    <Cart/>
+    {/* <Cart/> */}
 
     <FooterNew/>
     </>

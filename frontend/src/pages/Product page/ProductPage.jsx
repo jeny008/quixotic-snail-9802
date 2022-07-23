@@ -4,8 +4,9 @@ import Categories from './Categories'
 import { Box, Button, Center, Grid, Image, Img, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GetProductsData } from '../../redux/actions/action'
+import { Add_To_Cart, GetProductsData } from '../../redux/actions/action'
 import { useAlert } from 'react-alert'
+import { useNavigate } from 'react-router-dom'
 const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/vegicon.svg"
 
 
@@ -14,16 +15,17 @@ const ProductPage = () => {
   console.log(ProductsData);
   const dispatch=useDispatch()
   const alert = useAlert();
-
+  const navigate=useNavigate()
   useEffect(()=>{
     dispatch(GetProductsData())
   },[dispatch])
   const handleCart=(Id)=>{
-    console.log(Id);
+    dispatch(Add_To_Cart(Id,navigate,alert))
+
   }
-  if(ProductsData.length===0){
-    alert.show("No Data Found Pls Search For Another Category")
-  }
+  // if(ProductsData.length===0){
+  //   alert.show("No Data Found Pls Search For Another Category")
+  // }
   return (
     <Box>
       <Box>
