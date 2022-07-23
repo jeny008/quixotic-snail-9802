@@ -69,10 +69,8 @@ export const GetProductsData=(payload,alert)=>(dispatch)=>{
 //  login
 
 export const LoginByMobile=(payload)=>(dispatch)=>{
-    console.log(payload);
     axios.post('http://localhost:8080/BigBasket/login',payload,{withCredentials:true})
     .then((res)=>{
-        console.log(res.data);
         dispatch(Login(res.data))
     }).catch((err)=>{
         console.log(err);
@@ -81,10 +79,8 @@ export const LoginByMobile=(payload)=>(dispatch)=>{
 
 // Register
 export const NewUserRegistration=(payload)=>(dispatch)=>{
-    console.log(payload);
     axios.post('http://localhost:8080/BigBasket/signup',payload,{withCredentials:true})
     .then((res)=>{
-        console.log(res.data);
         dispatch(Register(res.data))
     }).catch((err)=>{
         console.log(err);
@@ -92,10 +88,8 @@ export const NewUserRegistration=(payload)=>(dispatch)=>{
 }
 
 export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
-    console.log(payload);
     axios.post('http://localhost:8080/BigBasket/login/otp',payload,{withCredentials:true})
     .then((res)=>{
-        console.log(res.data);
         if("login success"===res.data.message){
             localStorage.setItem("login",true)
             alert.success("Login Success")
@@ -145,7 +139,6 @@ export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
         method:"GET",
         withCredentials:true
     }).then((res)=>{
-        console.log(res);
         if("item added to cart"===res.data.message && isLogin==="true"){
             alert.success("Product Added To cart")
         }

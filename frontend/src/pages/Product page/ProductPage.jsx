@@ -13,7 +13,6 @@ const Logo="https://www.bbassets.com/static/v2514/custPage/build/content/img/veg
 const ProductPage = () => {
   const ProductsData=useSelector((state)=>state.Products.ProductsData)
   const isLogin=localStorage.getItem("login")
-  console.log(ProductsData);
   const dispatch=useDispatch()
   const alert = useAlert();
   const navigate=useNavigate()
