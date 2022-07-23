@@ -25,15 +25,25 @@ import { useEffect } from "react";
 import { FooterNew } from "../../components/footer/FooterNew";
 import { useNavigate } from "react-router-dom";
 import { ProductSlider } from "../../components/productslider/ProductSlider";
+import { useDispatch, useSelector } from "react-redux";
+import { GetProductsData } from "../../redux/actions/action";
 
 export const Home = () => {
   const [Readmore, setReadmore] = useState(false);
+  const ProductsData = useSelector((state) => state.Products.ProductsData);
+  console.log(ProductsData);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title =
       "Online Grocery Shopping and Online Supermarket in India - bigbasket";
-  });
+
+
+      dispatch(GetProductsData({Category:"Fruits_vegetables"}))
+
+  },[dispatch]);
 
   return (
     <div className={styles.home}>
