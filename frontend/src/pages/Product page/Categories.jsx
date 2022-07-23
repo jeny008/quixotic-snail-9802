@@ -17,8 +17,7 @@ const Categories = () => {
     console.log(categoriesData);
     useEffect(()=>{
         setSearchParams({Category:categoriesData})
-        let mainParams={Category:SearchParams.getAll("Category")}
-        dispatch(GetProductsData(mainParams))
+        dispatch(GetProductsData({Category:categoriesData}))
     },[categoriesData,SearchParams,dispatch,setSearchParams])
   return (
     <Box >

@@ -11,6 +11,7 @@ const userRouter = Router();
 //send otp
 userRouter.post("/login", async (req, res) => {
   const { mobile } = req.body;
+  console.log(mobile);
   if (mobile.toString().length !== 10) {
     return res.status(200).send({ message: "Invalid Mobile Number" });
   }
@@ -26,19 +27,16 @@ userRouter.post("/login", async (req, res) => {
 //login user by otp check
 userRouter.post("/login/otp", async (req, res) => {
   const { otp } = req.body;
-  const { message, status, token } = await loginUser(otp);
+  const { message, status, value } = await loginUser(otp);
   if (status === "error") {
     return res.status(404).send({ message, status });
   } else if (status === "failed") {
     return res.status(201).send({ message, status });
   } else {
-    res.cookie("TOKEN", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      maxAge: 300,
-    });
-    return res.status(200).send({ message, status });
+    return res
+      .cookie("auth", value, { httpOnly: true, secure: false })
+      .status(200)
+      .send({ message, status });
   }
 });
 
