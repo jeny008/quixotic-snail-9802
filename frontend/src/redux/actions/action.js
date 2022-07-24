@@ -58,22 +58,25 @@ export const GetProductsData = (payload, alert) => (dispatch) => {
         params: { ...payload },
         withCredentials: true
     })
-        .then((res) => {
-            console.log(res.data.data);
-            if (payload && res.data.data.length === 0) {
-                alert.show("No Data Found Pls Search For Another Category")
-            }
-            dispatch(getProducts(res.data.data))
-        }).catch((err) => {
-            console.log(err);
-        })
+    .then((res) => {
+        if (payload && res.data.data.length === 0) {
+            alert.show("No Data Found Pls Search For Another Category")
+        }
+        dispatch(getProducts(res.data.data))
+    })
+    .then(()=>{
+        dispatch(GetCartData())
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 }
 
 export const GetCartData = (payload, alert) => (dispatch) => {
+    console.log("called");
     axios({
         url: 'http://localhost:8080/BigBasket/cart',
         method: "GET",
-        params: { ...payload },
         withCredentials: true
     })
         .then((res) => {
@@ -109,11 +112,10 @@ export const NewUserRegistration = (payload) => (dispatch) => {
 }
 
 export const OtpVerification = (payload, alert, navigate) => (dispatch) => {
-    console.log(payload);
     axios.post('http://localhost:8080/BigBasket/login/otp', payload, { withCredentials: true })
         .then((res) => {
-            console.log(res.data);
             if ("login success" === res.data.message) {
+                localStorage.setItem("login","true")
                 alert.success("Login Success")
                 navigate("/")
             }
@@ -123,40 +125,7 @@ export const OtpVerification = (payload, alert, navigate) => (dispatch) => {
         }).catch((err) => {
             console.log(err);
         })
-export const LoginByMobile=(payload)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/login',payload,{withCredentials:true})
-    .then((res)=>{
-        dispatch(Login(res.data))
-    }).catch((err)=>{
-        console.log(err);
-    })
-}
-
-// Register
-export const NewUserRegistration=(payload)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/signup',payload,{withCredentials:true})
-    .then((res)=>{
-        dispatch(Register(res.data))
-    }).catch((err)=>{
-        console.log(err);
-    })
-}
-
-export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/login/otp',payload,{withCredentials:true})
-    .then((res)=>{
-        if("login success"===res.data.message){
-            localStorage.setItem("login",true)
-            alert.success("Login Success")
-            navigate("/")
-        }
-        if("wrong otp"===res.data.message){
-            alert.error("Invalid OTP")
-        }
-    }).catch((err)=>{
-        console.log(err);
-    })
-}
+    }
 
 export const Increment_Products_Qty = (_id) => (dispatch) => {
     axios({
@@ -190,16 +159,7 @@ export const Decrement_Products_Qty = (_id) => (dispatch) => {
             console.log(err)
         })
 }
-
-export const Add_To_Cart = (_id, navigate, alert) => (dispatch) => {
-    console.log(_id, "action");
-    axios({
-        url: `http://localhost:8080/BigBasket/product/${_id}/addtocart`,
-        method: "GET",
-        withCredentials: true
-    }).then((res) =>
-     {
-        if ("item added to cart" === res.data.message) 
+ 
 export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
     axios({
         url:`http://localhost:8080/BigBasket/product/${_id}/addtocart`,
@@ -217,6 +177,9 @@ export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
         }
         dispatch(AddProductToCart(res.data))
     })
+    .then(()=>{
+        dispatch(GetCartData())
+    })
         .catch((err) => {
             if ("unauthorised user" === err.response.data.message) {
                 alert.error("Please Login First")
@@ -225,14 +188,6 @@ export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
                 }, 1000)
             }
         })
-    .catch((err)=>{
-        if("unauthorised user"===err.response.data.message){
-            alert.error("Please Login First")
-           setTimeout(()=>{
-            navigate("/login")
-           },1000)
-        }
-    })
 }
 
 export const Logout=()=>(dispatch)=>{

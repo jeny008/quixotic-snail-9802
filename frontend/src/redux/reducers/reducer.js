@@ -1,6 +1,4 @@
-import { ADD_PRODUCT, DECREMENT_QTY, GET_CART_DATA, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION } from "../actions/action"
-import { ADD_PRODUCT, DECREMENT_QTY, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION,LOGOUT } from "../actions/action"
-
+import { ADD_PRODUCT, DECREMENT_QTY, GET_CART_DATA, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION, LOGOUT } from "../actions/action"
 
 const init={
     ProductsData:[],
@@ -18,7 +16,6 @@ const reducer=(state=init, action)=>{
                 ProductsData:action.payload
             }
         case GET_CART_DATA: 
-        console.log("reducer:", action.payload)
             return {
                 ...state,
                 CartData: action.payload,

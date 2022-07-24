@@ -6,6 +6,8 @@ import { Logout } from "../../redux/actions/action";
 import styles from "./navbar.module.css";
 
 export const Navbar = () => {
+  const cart = useSelector((state) => state.Products?.CartData[0]?.cartItems.length);
+  console.log(cart,"cart");
   const [SearchText, setSearchText] = useState("")
   const [login,setLogin]=useState(false)
  let isLogin=localStorage.getItem("login")
@@ -28,6 +30,9 @@ export const Navbar = () => {
   const handleSelect =(e)=>{
       // console.log(e.target.value)
       navigate("/products")
+  }
+  const handleCart=()=>{
+    navigate("/cart")
   }
   const Scrool =()=>{
     window.scroll({
@@ -76,14 +81,14 @@ export const Navbar = () => {
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
-            <div className={styles.cart} >
+            <div className={styles.cart} onClick={handleCart}>
               <Box >
                 <i className="fa-solid fa-basket-shopping" ></i>
               </Box>
               <div>
                 <span >My Basket</span>
                 <br />
-                <span>{" item"}</span>
+                <span>{ cart} Item</span>
               </div>
             </div>
           </div>
