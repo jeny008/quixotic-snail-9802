@@ -19,7 +19,7 @@ Choose from a wide range of options in every category, exclusively handpicked to
 
 ---
 
-- Deploy: [Link](url)
+- Deploy: [Link](https://bigbasket-clone-web16.netlify.app/)
 
 ### Credits
 
