@@ -6,6 +6,8 @@ This is a colaborative construct week(accomplished in 5 days) project.
 In this project we have tries to create a full stack clone of Bigbasket and for that we have used Reactjs as frontend framework, nodejs as backend framework, mongodb atlas to store the data, redisio to authenticate the user, sending otp and chakra ui library for responsiveness and getting the exact feature as main website.
 This project was built by a team of 5 developers in 5 Days. 
 </p>
+
+
 ### About Bigbasket:
 <p>
 bigbasket.com (Innovative Retail Concepts Private Limited) is India’s largest online food and grocery store. With over 18,000 products and over a 1000 brands in our catalogue you will find everything you are looking for. Right from fresh Fruits and Vegetables, Rice and Dals, Spices and Seasonings to Packaged products, Beverages, Personal care products, Meats – we have it all.
