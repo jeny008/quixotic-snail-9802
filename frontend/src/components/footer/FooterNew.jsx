@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, SimpleGrid,Link,Container,Stack,Text,Flex } from "@chakra-ui/react";
+import { Box, SimpleGrid,Link,Container,Stack,Text,Flex, Image, Grid } from "@chakra-ui/react";
 import {
   TiSocialFacebook,
   TiSocialPinterest,
@@ -13,8 +13,12 @@ import footer from "./paymentopt.jpeg"
 
 
 export const FooterNew = () => {
+
+  const iswidth = ["60%", "75%", "86%",]
+  const FontRes = ["10px","13px","16px"]
+
   return (
-    <Box width={"86%"} margin="auto">
+    <Box w={iswidth} margin="2% auto">
       <Flex
         columns={{ base: 1, sm: 2, md: 4 }}
         spacing={0}
@@ -25,43 +29,44 @@ export const FooterNew = () => {
         padding={"1rem"}
       >
         <Stack align={"flex-start"} w={"25%"}>
-          <Text color={"#84c225"} size={"16px"}>
+          <Text color={"#84c225"} size={FontRes}>
             bigbasket
-          </Text>
-          <Link href={"#"}>About Us</Link>
-          <Link href={"#"}>In News</Link>
-          <Link href={"#"}>Green bigbasket</Link>
-          <Link href={"#"}>Privacy Policy</Link>
-          <Link href={"#"}>Affiliate</Link>
-          <Link href={"#"}>Terms and Conditions</Link>
-          <Link href={"#"}>Careers At bigbasket</Link>
-          <Link href={"#"}>bb Instant</Link>
-          <Link href={"#"}>bb Daily</Link>
-          <Link href={"#"}>bb Blog</Link>
-          <Link href={"#"}>bbnow</Link>
+          </Text >
+          <Link href={"#"} size={FontRes} >About Us</Link>
+          <Link href={"#"} size={FontRes}>In News</Link>
+          <Link href={"#"} size={FontRes}>Green bigbasket</Link>
+          <Link href={"#"} size={FontRes}>Privacy Policy</Link>
+          <Link href={"#"} size={FontRes}>Affiliate</Link>
+          <Link href={"#"} size={FontRes}>Terms and Conditions</Link>
+          <Link href={"#"} size={FontRes}>Careers At bigbasket</Link>
+          <Link href={"#"} size={FontRes}>bb Instant</Link>
+          <Link href={"#"} size={FontRes}>bb Daily</Link>
+          <Link href={"#"} size={FontRes}>bb Blog</Link>
+          <Link href={"#"} size={FontRes}>bbnow</Link>
         </Stack>
         <Stack align={"flex-start"} w={"25%"}>
-          <Text color={"#84c225"} size={"16px"}>
+          <Text color={"#84c225"} size={FontRes}>
             Help
           </Text>
-          <Link href={"#"}>FAQ's</Link>
-          <Link href={"#"}>Contact Us</Link>
-          <Link href={"#"}>bb Wallet FAQ's</Link>
-          <Link href={"#"}>bb wallet T&Cs</Link>
-          <Link href={"#"}>Vendor Connect</Link>
+          <Link href={"#"} size={FontRes}>FAQ's</Link>
+          <Link href={"#"} size={FontRes}>Contact Us</Link>
+          <Link href={"#"} size={FontRes}>bb Wallet FAQ's</Link>
+          <Link href={"#"} size={FontRes} >bb wallet T&Cs</Link>
+          <Link href={"#"} size={FontRes}>Vendor Connect</Link>
         </Stack>
         <Stack align={"flex-start"} w={"25%"}>
-          <Text color={"#84c225"} size={"16px"}>
+          <Text color={"#84c225"} size={FontRes}>
             Download Our App
           </Text>
-          <Box>
-            <img
+          <Box w={iswidth}>
+            <Image
+            
               src="https://www.bbassets.com/static/v2557/custPage/build/content/img/Google-App-store-icon.png"
               alt=""
             />
-          </Box>
-          <Box>
-            <img
+          </Box > 
+          <Box w={iswidth}>
+            <Image
               src="	https://www.bbassets.com/static/v2557/custPage/build/content/img/Apple-App-store-icon.png"
               alt=""
             />
@@ -69,44 +74,37 @@ export const FooterNew = () => {
         </Stack>
 
         <Stack align={"flex-start"} w={"25%"}>
-          <Text color={"#84c225"} size={"16px"}>
+          <Text color={"#84c225"} size={FontRes}>
             Get Social With Us
           </Text>
-          <Flex>
+          <Grid gap={"5px"}>
             <Box
+              w={iswidth}
               bg={"#3b5998"}
-              boxSize={"40px"}
+              boxSize={["15px","25px","40px"]}
               borderRadius={"50%"}
               mr={"1rem"}
             >
-              <TiSocialFacebook color="white" size={"40px"} />
+              <TiSocialFacebook color="white"  size={  ["15px","25px","40px"] }/>
             </Box>
-            <Box bg={"red"} boxSize={"40px"} borderRadius={"50%"} mr={"1rem"}>
-              <TiSocialPinterest color="white" size={"40px"} />
+            <Box bg={"red"} boxSize={["15px","25px","40px"]} borderRadius={"50%"} mr={"1rem"}>
+              <TiSocialPinterest color="white" size={  ["15px","25px","40px"] } />
             </Box>
-            <Box bg={"blue"} boxSize={"40px"} borderRadius={"50%"} mr={"1rem"}>
-              <TiSocialTwitter color="white" size={"40px"} />
+            <Box bg={"blue"} boxSize={["15px","25px","40px"]} borderRadius={"50%"} mr={"1rem"}>
+              <TiSocialTwitter color="white" size={  ["15px","25px","40px"] } />
             </Box>
-            <Flex
-              bg={"#517fa4"}
-              boxSize={"40px"}
-              borderRadius={"50%"}
-              textAlign="center"
-              alignItems={"center"}
-              justifyContent={"center"}
-              mr={"1rem"}
-            >
-              <BsInstagram color="white" size={"25px"} />
-            </Flex>
-          </Flex>
+            <Box bg={"blue"} boxSize={["15px","25px","40px"]} borderRadius={"50%"} mr={"1rem"}>
+              <BsInstagram color="white" size={  ["15px","25px","40px"] } />
+            </Box>
+          </Grid>
         </Stack>
       </Flex>
       <Flex alignItems={"center"}>
-        <Text color={"#84c225"} size={"16px"} mr={"2rem"}>
+        <Text color={"#84c225"} size={FontRes} mr={"1rem"}>
           Payment Otions
         </Text>
-        <Box>
-          <img src={footer} alt="" />
+        <Box w={iswidth}>
+          <Image w={["30%","65%","80%"]} src={footer} alt="" />
         </Box>
       </Flex>
     </Box>

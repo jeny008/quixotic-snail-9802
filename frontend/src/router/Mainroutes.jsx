@@ -10,6 +10,7 @@ import { Cart } from "../pages/Payment/Cart";
 import {Address} from '../pages/Payment/Address'
 import ProductPage from "../pages/Product page/ProductPage";
 import { Payment } from "../pages/Payment/Payment";
+import { ProductDetails } from "../pages/ProductDetails/ProductDetails";
 
 export const Mainroutes = () => {
   return (
@@ -18,6 +19,8 @@ export const Mainroutes = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<ProductPage />}></Route>
+        <Route path="/products/productdetails/:id" element={<ProductDetails />}></Route>
+
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<UserDetails />}></Route>
         <Route path="/otp" element={<Otp />}></Route>
@@ -28,5 +31,5 @@ export const Mainroutes = () => {
       </Routes>
       <FooterNew />
     </>
-  );
+    )
 };

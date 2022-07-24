@@ -1,11 +1,13 @@
 import { ADD_PRODUCT, DECREMENT_QTY, GET_CART_DATA, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION } from "../actions/action"
+import { ADD_PRODUCT, DECREMENT_QTY, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION,LOGOUT } from "../actions/action"
 
 
 const init={
     ProductsData:[],
     Auth:[],
     CartData:[],
-    total: null
+    total: null,
+    productOne:{}
 }
 
 const reducer=(state=init, action)=>{
@@ -46,6 +48,11 @@ const reducer=(state=init, action)=>{
                 Auth:action.payload
             }
          case ADD_PRODUCT:
+            return {
+                ...state,
+                Auth:action.payload
+            }
+         case LOGOUT:
             return {
                 ...state,
                 Auth:action.payload

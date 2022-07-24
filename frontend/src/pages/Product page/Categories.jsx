@@ -15,8 +15,6 @@ const Categories = () => {
     const handlecategoriesData=(value)=>{
         setcategoriesData(value)
     }
-
-    console.log(categoriesData);
     useEffect(()=>{
         setSearchParams({Category:categoriesData})
         dispatch(GetProductsData({Category:categoriesData},alert))
