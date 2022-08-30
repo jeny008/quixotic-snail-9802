@@ -50,7 +50,7 @@ const AddProductToCart=(data)=>({
 //get the products data
 export const GetProductsData=(payload,alert)=>(dispatch)=>{
     axios({
-        url:'http://localhost:8080/BigBasket/product',
+        url:'https://bigbasketclon.herokuapp.com/BigBasket/product',
         method:"GET",
         params:{...payload},
         withCredentials:true
@@ -69,7 +69,7 @@ export const GetProductsData=(payload,alert)=>(dispatch)=>{
 //  login
 
 export const LoginByMobile=(payload)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/login',payload,{withCredentials:true})
+    axios.post('https://bigbasketclon.herokuapp.com/BigBasket/login',payload,{withCredentials:true})
     .then((res)=>{
         dispatch(Login(res.data))
     }).catch((err)=>{
@@ -79,7 +79,7 @@ export const LoginByMobile=(payload)=>(dispatch)=>{
 
 // Register
 export const NewUserRegistration=(payload)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/signup',payload,{withCredentials:true})
+    axios.post('https://bigbasketclon.herokuapp.com/BigBasket/signup',payload,{withCredentials:true})
     .then((res)=>{
         dispatch(Register(res.data))
     }).catch((err)=>{
@@ -105,7 +105,7 @@ export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
 
 export const Increment_Products_Qty=(_id)=>(dispatch)=>{
     axios({
-        url:`http://localhost:8080/products/${_id}/qty`,
+        url:`https://bigbasketclon.herokuapp.com/products/${_id}/qty`,
         method:"GET",
         withCredentials:true
     }).then((res)=>{
@@ -120,7 +120,7 @@ export const Increment_Products_Qty=(_id)=>(dispatch)=>{
 }
 export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
     axios({
-        url:`http://localhost:8080/products/${_id}/qty`,
+        url:`https://bigbasketclon.herokuapp.com/products/${_id}/qty`,
         method:"GET",
     }).then((res)=>{
         dispatch(Decrement(res.data))
@@ -135,7 +135,7 @@ export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
 
 export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
     axios({
-        url:`http://localhost:8080/BigBasket/product/${_id}/addtocart`,
+        url:`https://bigbasketclon.herokuapp.com/product/${_id}/addtocart`,
         method:"GET",
         withCredentials:true
     }).then((res)=>{

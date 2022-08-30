@@ -37,7 +37,7 @@ export const ProductDetails = () => {
   const alert = useAlert();
   useEffect(() => {
     axios
-      .get("http://localhost:8080/BigBasket/product")
+      .get("https://bigbasketclon.herokuapp.com/BigBasket/product")
       .then(({ data }) => {
         // console.log("data", data.data);
         let prodDet = data.data.filter((elem) => elem._id === id)[0];
