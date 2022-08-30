@@ -1,10 +1,11 @@
-import { ADD_PRODUCT, DECREMENT_QTY, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION,LOGOUT } from "../actions/action"
-
+import { ADD_PRODUCT, DECREMENT_QTY, GET_CART_DATA, GET_PRODUCTS_DATA, INCREMENT_QTY, LOGIN, OTPAUTH, REGISTRATION, LOGOUT } from "../actions/action"
 
 const init={
     ProductsData:[],
-    productOne:{},
-    Auth:[]
+    Auth:[],
+    CartData:[],
+    total: null,
+    productOne:{}
 }
 
 const reducer=(state=init, action)=>{
@@ -14,10 +15,19 @@ const reducer=(state=init, action)=>{
                 ...state,
                 ProductsData:action.payload
             }
+        case GET_CART_DATA: 
+            return {
+                ...state,
+                CartData: action.payload,
+                total: action.payload[0].cartItems.reduce((accumulator, currentValue) => {
+                    return accumulator + currentValue.Price * currentValue.quantity;
+                }, 0),
+            }    
         case INCREMENT_QTY:
             return{
                 ...state,
-                ProductsData:action.payload
+                ProductsData:action.payload,
+                CartData: state.CartData
             }
         case DECREMENT_QTY:
             return{

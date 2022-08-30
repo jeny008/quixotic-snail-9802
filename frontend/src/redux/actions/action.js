@@ -1,69 +1,91 @@
 import axios from "axios"
-export const GET_PRODUCTS_DATA="GET_PRODUCTS_DATA"
-export const LOGIN ="LOGIN"
-export const REGISTRATION="REGISTRATION"
-export const OTPAUTH='OTPAUTH'
-export const INCREMENT_QTY="INCREMENT_QTY"
-export const DECREMENT_QTY="DECREMENT_QTY"
-export const ADD_PRODUCT="ADD_PRODUCT"
+export const GET_PRODUCTS_DATA = "GET_PRODUCTS_DATA"
+export const LOGIN = "LOGIN"
+export const REGISTRATION = "REGISTRATION"
+export const OTPAUTH = 'OTPAUTH'
+export const INCREMENT_QTY = "INCREMENT_QTY"
+export const DECREMENT_QTY = "DECREMENT_QTY"
+export const ADD_PRODUCT = "ADD_PRODUCT"
+export const GET_CART_DATA = "GET_CART_DATA"
 export const LOGOUT="LOGOUT"
-
-
-
 // get Data req from Backend..
-const getProducts=(data)=>({
-    type:GET_PRODUCTS_DATA,
-    payload:data
+const getProducts = (data) => ({
+    type: GET_PRODUCTS_DATA,
+    payload: data
 })
 
-const Login=(details)=>({
-    type:LOGIN,
-    payload:details
+const cartProducts = (data) => ({
+    type: GET_CART_DATA,
+    payload: data
 })
 
-const Register=(details)=>({
-    type:REGISTRATION,
-    payload:details
+const Login = (details) => ({
+    type: LOGIN,
+    payload: details
+})
+
+const Register = (details) => ({
+    type: REGISTRATION,
+    payload: details
 })
 
 
-const Increment=(data)=>({
-    type:INCREMENT_QTY,
-    payload:data
+const Increment = (data) => ({
+    type: INCREMENT_QTY,
+    payload: data
 })
 
-const Decrement=(data)=>({
-    type:DECREMENT_QTY,
-    payload:data
+const Decrement = (data) => ({
+    type: DECREMENT_QTY,
+    payload: data
 })
 const LogoutUser=(data)=>({
     type:LOGOUT,
     payload:data
 })
 
-const AddProductToCart=(data)=>({
-    type:ADD_PRODUCT,
-    payload:data
+const AddProductToCart = (data) => ({
+    type: ADD_PRODUCT,
+    payload: data
 })
 
 
 //get the products data
-export const GetProductsData=(payload,alert)=>(dispatch)=>{
+export const GetProductsData = (payload, alert) => (dispatch) => {
     axios({
+
         url:'https://bigbasketclon.herokuapp.com/BigBasket/product',
         method:"GET",
         params:{...payload},
         withCredentials:true
+
     })
-    .then((res)=>{
-        console.log(res.data.data);
-        if(payload && res.data.data.length===0){
+    .then((res) => {
+        if (payload && res.data.data.length === 0) {
             alert.show("No Data Found Pls Search For Another Category")
         }
         dispatch(getProducts(res.data.data))
-    }).catch((err)=>{
+    })
+    .then(()=>{
+        dispatch(GetCartData())
+    })
+    .catch((err) => {
         console.log(err);
     })
+}
+
+export const GetCartData = (payload, alert) => (dispatch) => {
+    console.log("called");
+    axios({
+        url: 'https://bigbasketclon.herokuapp.com/BigBasket/cart',
+        method: "GET",
+        withCredentials: true
+    })
+        .then((res) => {
+            dispatch(cartProducts(res.data.data))
+        }).catch((err) => {
+            console.log(err);
+        })
 }
 
 //  login
@@ -85,25 +107,26 @@ export const NewUserRegistration=(payload)=>(dispatch)=>{
     }).catch((err)=>{
         console.log(err);
     })
+
 }
 
-export const OtpVerification=(payload,alert,navigate)=>(dispatch)=>{
-    axios.post('http://localhost:8080/BigBasket/login/otp',payload,{withCredentials:true})
-    .then((res)=>{
-        if("login success"===res.data.message){
-            localStorage.setItem("login",true)
-            alert.success("Login Success")
-            navigate("/")
-        }
-        if("wrong otp"===res.data.message){
-            alert.error("Invalid OTP")
-        }
-    }).catch((err)=>{
-        console.log(err);
-    })
-}
+export const OtpVerification = (payload, alert, navigate) => (dispatch) => {
+    axios.post('http://localhost:8080/BigBasket/login/otp', payload, { withCredentials: true })
+        .then((res) => {
+            if ("login success" === res.data.message) {
+                localStorage.setItem("login","true")
+                alert.success("Login Success")
+                navigate("/")
+            }
+            if ("wrong otp" === res.data.message) {
+                alert.error("Invalid OTP")
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
-export const Increment_Products_Qty=(_id)=>(dispatch)=>{
+export const Increment_Products_Qty = (_id) => (dispatch) => {
     axios({
         url:`https://bigbasketclon.herokuapp.com/products/${_id}/qty`,
         method:"GET",
@@ -116,23 +139,30 @@ export const Increment_Products_Qty=(_id)=>(dispatch)=>{
     })
     .catch((err)=>{
         console.log(err)
+
     })
+        .then(() => {
+            dispatch(GetCartData())
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
-export const Decrement_Products_Qty=(_id)=>(dispatch)=>{
+export const Decrement_Products_Qty = (_id) => (dispatch) => {
     axios({
         url:`https://bigbasketclon.herokuapp.com/products/${_id}/qty`,
         method:"GET",
     }).then((res)=>{
         dispatch(Decrement(res.data))
     })
-    .then(()=>{
-        dispatch(getProducts())
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+        .then(() => {
+            dispatch(GetCartData())
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
-
+ 
 export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
     axios({
         url:`https://bigbasketclon.herokuapp.com/product/${_id}/addtocart`,
@@ -150,19 +180,22 @@ export const Add_To_Cart=(_id,navigate,alert,isLogin)=>(dispatch)=>{
         }
         dispatch(AddProductToCart(res.data))
     })
-    .catch((err)=>{
-        if("unauthorised user"===err.response.data.message){
-            alert.error("Please Login First")
-           setTimeout(()=>{
-            navigate("/login")
-           },1000)
-        }
+    .then(()=>{
+        dispatch(GetCartData())
     })
+        .catch((err) => {
+            if ("unauthorised user" === err.response.data.message) {
+                alert.error("Please Login First")
+                setTimeout(() => {
+                    navigate("/login")
+                }, 1000)
+            }
+        })
 }
 
 export const Logout=()=>(dispatch)=>{
     axios({
-        url:`http://localhost:8080/BigBasket/logout`,
+        url:`https://bigbasketclon.herokuapp.com/BigBasket/logout`,
         method:"GET",
     }).then((res)=>{
         if(res.data.message==="user loggedout successfully"){

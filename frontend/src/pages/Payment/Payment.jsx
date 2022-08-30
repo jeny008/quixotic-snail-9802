@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { GetCartData, } from "../../redux/actions/action";
+import { useDispatch, useSelector } from "react-redux";
+
+
 import {
   Box,
   Flex,
@@ -11,33 +15,29 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Navigate, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-// import { Topnavbar } from "../Navbar/Topnavbar";
-// import { LogedIn } from "../Login/LogedIn";
+
 
 export const Payment = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const total = useSelector((state) => state.Products.total);
+  console.log("total", total);
+
+
+  useEffect(() => {
+    dispatch(GetCartData());
+
+  }, [dispatch]);
+
+
 
   const [input, setInput] = useState("");
-
   const isError = input === "";
   const [card, setCard] = useState("");
   const [cvv, setCVV] = useState("");
   const [year, setYear] = useState("");
-
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.products.cart);
-  const total = cart.reduce(function (acc, cv) {
-    console.log(cv.price);
-    return acc + Math.floor(cv.price);
-  }, 0);
-  var saved = 0;
-  for (let e of cart) {
-    saved = saved + (Math.floor(e.price )- Math.floor(e.price - (10 * e.price) / 100));
-  }
   return (
     <Box width={"100%"}>
-      {/* <Topnavbar /> */}
       <Box width={"75%"} margin="auto">
         <Box></Box>
         <Flex width={"100%"} justifyContent={"space-between"}>
@@ -153,7 +153,7 @@ export const Payment = () => {
                           cvv
                         </FormLabel>
                         <Input
-                          type="number"
+                          type="password"
                           fontSize={"12px"}
                           fontWeight={300}
                           onChange={(e) => {
@@ -229,10 +229,7 @@ export const Payment = () => {
               ml={"1rem"}
             >
               <Text mb={"3px"}>
-                Basket value Rs {Math.floor(total - saved)}
-              </Text>
-              <Text borderBottom={"1px solid #e8e8e8"} mb={"3px"}>
-                Delivery Charge <span color="lightgreen">Free</span>
+                Basket value Rs.{total}
               </Text>
               <Flex
                 alignItems={"center"}
@@ -247,17 +244,14 @@ export const Payment = () => {
                   pb="1rem"
                   pt="1rem"
                 >
-                  Total Amount Payable
-                </Text>
-                <Text fontSize={"15px"} fontWeight={450}>
-                  Rs {Math.floor(total - saved)}
+                  Total Amount Payable Rs. {total}
                 </Text>
               </Flex>
             </Box>
           </Box>
         </Flex>
       </Box>
-     
+
     </Box>
   );
 };

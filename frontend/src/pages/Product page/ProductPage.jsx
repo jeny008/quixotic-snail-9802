@@ -49,7 +49,7 @@ const ProductPage = () => {
           </Box>
           <Box>
             <Grid className='products-scr' display="grid" gridTemplateColumns={{base:"repeat(1,1fr)", md:"repeat(2,1fr)",lg:"repeat(4,1fr)"}}  >
-                {ProductsData.map((item)=>( 
+                {ProductsData?.map((item)=>( 
                   <ProdData  Id={item._id} image={item.Image_url} name={item.Title}  kg={item.kg} sprice={item.Price} mrp={item.Price} Brand={item.Brand} Logo={Logo} handleCartData={handleCart}  />
                 ))}
             </Grid>
